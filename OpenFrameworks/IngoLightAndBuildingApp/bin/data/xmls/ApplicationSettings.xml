@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+
+  <of_settings>
+
+    <window title="IngoLightAndBuildingApp" x="0" y="50" width="1920" height="1080" fullscreen="0" showCursor="1"/>
+    <debug showCursor="1" setVerbose="1"/> 
+    <network ipAddress="127.0.0.1" portOscReceive="90000" portOscSend="12346" syphon="IngoSyphon"/>
+    <app request_time_ms="1000"  sceneTimer="120"/>
+    <serial auto="1" serialPort="2"/>
+
+  </of_settings>
+
+  <textures>
+
+    <texture name="Brush" path="images/general/brush2.png"/>    
+    <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
+
+  </textures>
+
+  <videos>
+
+    <video name="TEST_VIDEO" path="videos/video_test.mp4"/>
+  
+  </videos>
+
+  <colors>
+
+    <color name="BackgroundColor" r="40" g="40" b="43" a="255"/>
+    <color name="CenterBackgroundColor" r="85" g="78" b="68" a="255"/>
+    <color name="EdgeBackgroundColor" r="30" g="30" b="30" a="255"/>
+    <color  name="GUI_Background" r="0" g="0" b="0" a="127"/>
+    <color  name="GUI_Fill" r="160" g="160" b="160" a="160"/>
+    <color  name="GUI1" r="160" g="160" b="80" a="200"/>
+
+  </colors>
+
+  <tags>
+
+    <tag name="ingohappy"/>
+    <tag name="ingosad"/>
+  
+  </tags>
+
+</settings>
