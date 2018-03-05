@@ -300,7 +300,7 @@ void SettingsManager::loadVideoSettings()
 
 void SettingsManager::loadTagSettings()
 {
-    string path = "//videos/video";
+    string path = "//tags/tag";
     auto tagsXml = m_xml.find(path);
     
     if(!tagsXml.empty()) {

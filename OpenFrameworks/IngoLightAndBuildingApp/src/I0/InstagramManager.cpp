@@ -10,7 +10,7 @@
 #include "AppManager.h"
 
 
-InstagramManager::InstagramManager(): Manager(), m_currentString(""), m_newTag(false), m_firstTag(true), m_currentCode("")
+InstagramManager::InstagramManager(): Manager()
 {
     //Intentionally left empty
 }
@@ -42,6 +42,10 @@ void InstagramManager::setup()
 void InstagramManager::setupTags()
 {
     m_tags = AppManager::getInstance().getSettingsManager().getTags();
+    
+    for(auto tag: m_tags){
+        m_currentCodes[tag] = "";
+    }
 }
 
 void InstagramManager::setupTimers()
@@ -56,10 +60,6 @@ void InstagramManager::setupTimers()
 void InstagramManager::update()
 {
     this->updateTimers();
-   
-    if(m_newTag){
-        m_newTag = false;
-    }
 }
 
 
@@ -79,16 +79,28 @@ bool InstagramManager::checkUpdate(const string& result, const string& tag)
     
     string codeString = this->parseJsonCode(result);
     
+    //ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ", code: "<< codeString;
     
-    if(m_currentCode!=codeString){
-        m_currentCode=codeString;
+    if ( m_currentCodes.find(tag) == m_currentCodes.end() )
+    {
+        return false;
+    }
+    
+   
+    
+    if(m_currentCodes[tag]!=codeString){
+        m_currentCodes[tag]=codeString;
         
         string hashtagString = this->parseJsonTag(result);
-        ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ": "<< m_currentCode;
-        if(this->checkAllTags(hashtagString)){
-            m_currentString = hashtagString;
-            return true;
-        }
+        
+         ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ", code: "<< codeString;
+         ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ": text"<< hashtagString;
+        
+        return true;
+//        if(this->checkAllTags(hashtagString)){
+//            m_currentString = hashtagString;
+//            return true;
+//        }
         
     }
     
@@ -101,14 +113,14 @@ string InstagramManager::parseJsonTag(const string& result)
 {
     m_json.clear();
     m_json.parse(result);
-    return m_json["tag"]["media"]["nodes"][0]["caption"].asString();
+    return m_json["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"][0]["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"].asString();
 }
 
 string InstagramManager::parseJsonCode(const string& result)
 {
     m_json.clear();
     m_json.parse(result);
-    return m_json["tag"]["media"]["nodes"][0]["code"].asString();
+    return m_json["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"][0]["node"]["shortcode"].asString();
 }
 
 
@@ -120,11 +132,13 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
         return;
     }
 
-    if(response.status==200 && response.request.name == m_tags.front())
+    if(response.status==200)
     {
-//        ofLogNotice() <<"InstagramManager::urlResponse -> " << response.request.name << ", " << response.status;
+        bool isNewTag = this->checkUpdate(response.data, response.request.name);
         
-        m_newTag = this->checkUpdate(response.data, m_tags.front());
+        ofLogNotice() <<"InstagramManager::urlResponse -> " << response.request.name << ", " << response.status;
+        //ofLogNotice() <<"InstagramManager::urlResponse -> " << response.data;
+        //m_newTag = this->checkUpdate(response.data, m_tags.front());
     }
 }
 
@@ -133,15 +147,18 @@ void InstagramManager::urlTimerCompleteHandler( int &args )
 {
     m_urlTimer.start(false);
   //  cout<<"TIMER COMPLETED"<<endl;
+    
     string start = "https://www.instagram.com/explore/tags/" ;
     string end = "/?__a=1" ;
     
-    if(m_tags.empty()){
-        return;
+    for(auto tag: m_tags){
+        string url = start + tag + end;
+        ofLoadURLAsync(url, tag);
+        //ofLogNotice() <<"InstagramManager::urlTimerCompleteHandler -> tag " << tag << ", url: "<< url;
     }
     
-    string url = start + m_tags.front() + end;
-    ofLoadURLAsync(url, m_tags.front());
+//    string url = start + m_tags.front() + end;
+//    ofLoadURLAsync(url, m_tags.front());
 }
 
 

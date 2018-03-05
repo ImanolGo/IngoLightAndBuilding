@@ -39,8 +39,6 @@ public:
     
     void urlTimerCompleteHandler( int &args ) ;
     
-    const string& getCurrentString() const {return m_currentString;}
-
 
 private:
     
@@ -67,10 +65,8 @@ private:
     TagVector          m_tags;
     ofxSimpleTimer     m_urlTimer;
     ofxJSONElement     m_json;
-    string             m_currentString;
-    string             m_currentCode;
-    bool               m_newTag;
-    bool               m_firstTag;
+    TagMap             m_currentCodes;
+
 
 };
 

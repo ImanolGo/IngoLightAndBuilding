@@ -6,8 +6,8 @@ OF_PATH = ../../../../../../../../Applications/of_v20180215_osx_release
 #include "../../../../../../../../Applications/of_v20180215_osx_release/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
 //ICONS - NEW IN 0072 
-ICON_NAME_DEBUG = IG_Software.icns
-ICON_NAME_RELEASE = IG_Software.icns
+ICON_NAME_DEBUG = ProtoPixel.icns
+ICON_NAME_RELEASE = ProtoPixel.icns
 ICON_FILE_PATH = $(OF_PATH)/libs/openFrameworksCompiled/project/osx/
 
 //IF YOU WANT AN APP TO HAVE A CUSTOM ICON - PUT THEM IN YOUR DATA FOLDER AND CHANGE ICON_FILE_PATH to:

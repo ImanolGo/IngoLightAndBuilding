@@ -3,10 +3,10 @@
 
   <of_settings>
 
-    <window title="IngoLightAndBuildingApp" x="0" y="50" width="1920" height="1080" fullscreen="0" showCursor="1"/>
-    <debug showCursor="1" setVerbose="1"/> 
+    <window title="IngoLightAndBuildingApp" x="0" y="50" width="960" height="600" fullscreen="0" showCursor="1"/>
+    <debug showCursor="1" setVerbose="0"/> 
     <network ipAddress="127.0.0.1" portOscReceive="90000" portOscSend="12346" syphon="IngoSyphon"/>
-    <app request_time_ms="1000"  sceneTimer="120"/>
+    <app request_time_ms="5000"  sceneTimer="120"/>
     <serial auto="1" serialPort="2"/>
 
   </of_settings>
@@ -37,8 +37,8 @@
 
   <tags>
 
-    <tag name="ingohappy"/>
-    <tag name="ingosad"/>
+    <tag name="happy"/>
+    <tag name="sad"/>
   
   </tags>
 
