@@ -52,7 +52,7 @@ public:
     void changeScene(int sceneIndex);
     
     //! changes transition time
-    void onTransitionTimeChange(float value);
+    void onTransitionTimeChange(float& value);
     
     //! Returns the number of total secenes
     int getNumberScenes(){return m_mySceneManager.scenes.size();};

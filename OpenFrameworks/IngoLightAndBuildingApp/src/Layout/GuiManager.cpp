@@ -39,6 +39,8 @@ void GuiManager::setup()
 
     this->setupGuiParameters();
     this->setupScenesGui();
+    this->setupLayoutGui();
+    this->setupParticlesGui();
     this->setupGuiEvents();
     this->loadGuiValues();
     
@@ -96,6 +98,55 @@ void GuiManager::setupScenesGui()
 
 }
 
+void GuiManager::setupLayoutGui()
+{
+    auto layoutManager = &AppManager::getInstance().getLayoutManager();
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
+    
+    m_sceneTransitionTime.set("TransitionTime", 2.0, 0.0, 10.0);
+    m_sceneTransitionTime.addListener(sceneManager, &SceneManager::onTransitionTimeChange);
+    m_parameters.add(m_sceneTransitionTime);
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
+    folder->addSlider(m_sceneTransitionTime);
+    folder->expand();
+    m_gui.addBreak();
+}
+
+void GuiManager::setupParticlesGui()
+{
+    auto particlesManager = &AppManager::getInstance().getParticlesManager();
+    
+    m_particlesDirection.set("Direction", 0.0, 0.0, 360.0);
+    m_particlesDirection.addListener(particlesManager, &ParticlesManager::setDirecction);
+    m_parameters.add(m_particlesDirection);
+    
+    m_particlesDirectionMag.set("Dir. Mag.", 0.0, 0.0, 2.0);
+    m_particlesDirectionMag.addListener(particlesManager, &ParticlesManager::setDirecctionMag);
+    m_parameters.add(m_particlesDirectionMag);
+    
+    m_particlesSpeed.set("Speed", 0.0, 0.0, 2.0);
+    m_particlesSpeed.addListener(particlesManager, &ParticlesManager::setSpeed);
+    m_parameters.add(m_particlesSpeed);
+    
+    m_particlesSize.set("Size", 6.0, 0.0, 30.0);
+    m_particlesSize.addListener(particlesManager, &ParticlesManager::setSize);
+    m_parameters.add(m_particlesSize);
+    
+    m_particlesNum.set("Num", 800, 0, 800);
+    m_particlesNum.addListener(particlesManager, &ParticlesManager::setNum);
+    m_parameters.add(m_particlesNum);
+    
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("PARTICLES", ofColor::yellow);
+    folder->addSlider(m_particlesDirection);
+    folder->addSlider(m_particlesDirectionMag);
+    folder->addSlider(m_particlesSpeed);
+    folder->addSlider(m_particlesSize);
+    folder->addSlider(m_particlesNum);
+    folder->expand();
+    m_gui.addBreak();
+}
 
 void GuiManager::setupGuiEvents()
 {

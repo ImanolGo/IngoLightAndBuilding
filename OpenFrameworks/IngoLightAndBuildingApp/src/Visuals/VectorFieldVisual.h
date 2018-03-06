@@ -1,11 +1,10 @@
 /*
  *  VectorFieldVisual.h
- *  CoralSoulApp
+ *  Ingo Light And Building
  *
- *  Created by Imanol Gomez on 03/12/17.
+ *  Created by Imanol Gomez on 01/03/18.
  *
  */
-
 
 #pragma once
 
@@ -13,6 +12,9 @@
 #include "VectorFieldParticle.h"
 #include "ofxBlur.h"
 #include "ofxPostProcessing.h"
+
+#define radian2degree(a) (a * 57.295779513082)
+#define degree2radian(a) (a * 0.017453292519)
 
 
 //========================= class VectorFieldVisual ==========================

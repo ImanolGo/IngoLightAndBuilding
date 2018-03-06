@@ -75,6 +75,7 @@ void AppManager::setupManagers()
     m_keyboardManager.setup();
     //m_noiseManager.setup();
     m_sceneManager.setup();
+    m_particlesManager.setup();
     m_oscManager.setup();
 
     m_guiManager.setup();
@@ -89,6 +90,7 @@ void AppManager::update()
     m_viewManager.update();
     m_serialManager.update();
     m_instagramManager.update();
+    m_particlesManager.update();
     m_sceneManager.update();
     m_guiManager.update();
     m_layoutManager.update();

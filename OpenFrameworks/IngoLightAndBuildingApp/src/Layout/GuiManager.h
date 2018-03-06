@@ -83,6 +83,8 @@ private:
     
     void setupLayoutGui();
     
+    void setupParticlesGui();
+    
     void setupGuiEvents();
     
     void drawRectangle();
@@ -95,6 +97,12 @@ private:
     ofParameterGroup        m_parameters;
     
     ofParameter<float>      m_sceneTransitionTime;
+    
+    ofParameter<float>      m_particlesDirection;
+    ofParameter<float>      m_particlesDirectionMag;
+    ofParameter<float>      m_particlesSpeed;
+    ofParameter<float>      m_particlesSize;
+    ofParameter<int>        m_particlesNum;
     
    
     

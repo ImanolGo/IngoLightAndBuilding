@@ -12,5 +12,6 @@
 #include "BlankScene.h"
 #include "VideoScene.h"
 #include "ImageScene.h"
+#include "VectorFieldScene.h"
 
 

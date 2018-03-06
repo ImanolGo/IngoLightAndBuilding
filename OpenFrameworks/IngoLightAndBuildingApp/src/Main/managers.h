@@ -22,3 +22,4 @@
 #include "SerialManager.h"
 #include "NoiseManager.h"
 #include "OscManager.h"
+#include "ParticlesManager.h"

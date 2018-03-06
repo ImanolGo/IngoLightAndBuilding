@@ -1,8 +1,8 @@
 /*
  *  VectorFieldVisual.cpp
- *  CoralSoulApp
+ *  Ingo Light And Building
  *
- *  Created by Imanol Gomez on 03/12/17.
+ *  Created by Imanol Gomez on 01/03/18.
  *
  */
 

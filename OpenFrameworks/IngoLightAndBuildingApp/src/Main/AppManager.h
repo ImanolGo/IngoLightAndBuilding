@@ -76,6 +76,9 @@ public:
     //! Returns the osc manager
     OscManager&  getOscManager() { return m_oscManager; }
     
+    //! Returns the particles manager
+    ParticlesManager&  getParticlesManager() { return m_particlesManager; }
+    
 
     //==========================================================================
     
@@ -121,6 +124,7 @@ private:
     NoiseManager             m_noiseManager;            ///< Manages the noise generator
     InstagramManager         m_instagramManager;        ///< Manages the instagram feed
     OscManager               m_oscManager;              ///< Manages all the osc communications
+    ParticlesManager         m_particlesManager;        ///< Manages all the particles parameters
     
     bool                     m_debugMode;
     bool                     m_initialized;

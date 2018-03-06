@@ -1,8 +1,8 @@
 /*
  *  NoiseManager.h
- *  CoralSoulApp
+ *  Ingo Light And Building
  *
- *  Created by Imanol Gomez on 14/11/17.
+ *  Created by Imanol Gomez on 01/03/18.
  *
  */
 

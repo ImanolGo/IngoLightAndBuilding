@@ -62,6 +62,10 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
     m_mySceneManager.addScene(scene);
     
+    //Create Vector Field Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene());
+    m_mySceneManager.addScene(scene);
+    
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height = AppManager::getInstance().getSettingsManager().getAppHeight();
 
@@ -183,7 +187,7 @@ void SceneManager::changeScene(int sceneIndex)
 }
 
 
-void SceneManager::onTransitionTimeChange(float value)
+void SceneManager::onTransitionTimeChange(float& value)
 {
    m_mySceneManager.setSceneDuration(value,value);
    m_sceneTimer.start(false,true);

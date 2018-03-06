@@ -1,2 +1,9 @@
 <?xml version="1.0"?>
-<group />
+<group>
+	<TransitionTime>1.35</TransitionTime>
+	<Direction>301.35</Direction>
+	<Dir__Mag_>0</Dir__Mag_>
+	<Speed>2</Speed>
+	<Size>8.76</Size>
+	<Num>656</Num>
+</group>

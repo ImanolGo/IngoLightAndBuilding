@@ -1,8 +1,8 @@
 /*
  *  VectorFieldParticle.cpp
- *  CoralSoulApp
+ *  Ingo Light And Building
  *
- *  Created by Imanol Gomez on 03/12/17.
+ *  Created by Imanol Gomez on 01/03/18.
  *
  */
 
@@ -87,9 +87,10 @@ void VectorFieldParticle::update()
     //ofColor c1 = ofColor(0,164,243);
     //m_color = ofColor(120,255,214);
     
-    ofColor r = ofColor(99,209,176);
-    ofColor b = ofColor(0,60,220);
-    m_color= b.getLerped(r, adj);
+//    ofColor r = ofColor(99,209,176);
+//    ofColor b = ofColor(0,60,220);
+//    m_color= b.getLerped(r, adj);
+    m_color = ofColor(255);
     
 
     //float hue = ofLerp(246,120,adj);
