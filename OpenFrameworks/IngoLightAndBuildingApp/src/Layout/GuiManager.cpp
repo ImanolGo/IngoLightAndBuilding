@@ -42,6 +42,7 @@ void GuiManager::setup()
     this->setupScenesGui();
     this->setupLayoutGui();
     this->setupParticlesGui();
+    this->setupPaletteGui();
     this->setupGuiEvents();
     this->loadGuiValues();
     
@@ -115,6 +116,29 @@ void GuiManager::setupLayoutGui()
     folder->expand();
     m_gui.addBreak();
 }
+
+void GuiManager::setupPaletteGui()
+{
+    // add some color pickers to color our lines //
+    ofxDatGuiFolder* f1 = m_gui.addFolder("PALETTE", ofColor::fromHex(0x2FA1D6));
+    
+    int numColors = 5;
+    for(int i = 0; i < numColors; i++)
+    {
+        string colorName = "COLOR " + ofToString(i);
+        f1->addColorPicker(colorName);
+        
+        ofParameter<int>   colorHex;
+        colorHex.set(colorName, 0, 0, 16777215);
+        m_colorHexVector.push_back(colorHex);
+        m_presets.add(m_colorHexVector.back());
+        
+    }
+    f1->expand();
+    m_gui.addBreak();
+    
+}
+
 
 void GuiManager::setupParticlesGui()
 {
@@ -231,6 +255,8 @@ void GuiManager::loadPresetsValues(const string& sceneName)
     xml.load(xmlName);
     ofDeserialize(xml, m_presets);
     // xml.deserialize(m_parameters);
+    
+    this->onResetColors();
 }
 
 void GuiManager::toggleGui()
@@ -245,6 +271,30 @@ void GuiManager::drawRectangle()
     ofSetColor(15);
     ofDrawRectangle( m_gui.getPosition().x - margin, 0, m_gui.getWidth() + 2*margin, ofGetHeight());
     ofPopStyle();
+}
+
+
+void GuiManager::onResetColors()
+{
+    for(auto hexColor: m_colorHexVector){
+        
+   // for (int i = 0; i< m_colorHexVector.size(); i++){
+        
+        //string colorName = "COLOR " + ofToString(i);
+        string colorName = hexColor.getName();
+        if( m_presets.contains(colorName)){
+            auto hexColor = m_presets.getInt(colorName);
+            int hexValue = hexColor.get();
+            ofColor c  = ofColor::fromHex(hexValue); // c is yellow.
+            //c = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            ofLogNotice() <<"GuiManager::onResetColors << set color r: " << ofToString((int)c.r) << ", g: " <<  ofToString((int)c.g) << ", b:" <<ofToString((int)c.b);
+            m_gui.getColorPicker(hexColor.getName())->setVisible(true);
+            m_gui.getColorPicker(hexColor.getName())->setColor(c);
+            
+            ofLogNotice() <<"GuiManager::onResetColors << set color : " << colorName << " to " << hexValue;
+        }
+        
+    }
 }
 
 void GuiManager::onDropdownEvent(ofxDatGuiDropdownEvent e)
@@ -264,9 +314,11 @@ void GuiManager::onColorPickerEvent(ofxDatGuiColorPickerEvent e)
 {
     cout << "onColorPickerEvent: " << e.target->getName() << " Selected" << endl;
     
-    if (e.target->getName() == "COLOR MODE"){
-        
-    }
+    this->setColor(e.target->getName(), e.color);
+    
+//    if (e.target->getName() == "COLOR MODE"){
+//
+//    }
     
 }
 
@@ -280,6 +332,15 @@ void GuiManager::onButtonEvent(ofxDatGuiButtonEvent e)
     }
 }
 
+
+void GuiManager::setColor(string name, ofColor& color)
+{
+    if( m_presets.contains(name)){
+         auto hexColor = m_presets.getInt(name);
+         hexColor.set(color.getHex());
+         ofLogNotice() <<"GuiManager::setColor << set preset color : " << name << "to " << hexColor.get();
+    }
+}
 
 void GuiManager::onToggleEvent(ofxDatGuiToggleEvent e)
 {

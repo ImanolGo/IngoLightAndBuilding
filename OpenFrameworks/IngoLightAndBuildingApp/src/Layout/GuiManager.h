@@ -90,9 +90,15 @@ private:
     
     void setupParticlesGui();
     
+    void setupPaletteGui();
+    
     void setupGuiEvents();
     
     void drawRectangle();
+
+    void setColor(string name, ofColor& color);
+    
+    void onResetColors();
 
 
 private:
@@ -115,8 +121,6 @@ private:
     ofParameter<float>      m_particlesRandomness;
     
     vector<ofParameter<int> > m_colorHexVector;
-    
-   
     
     bool        m_showGui;  //It defines the whether the gui should be shown or not
     

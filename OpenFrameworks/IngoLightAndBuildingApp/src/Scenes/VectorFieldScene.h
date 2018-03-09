@@ -18,7 +18,7 @@ class VectorFieldScene : public ofxScene {
 public:
 
     //! Constructor
-    VectorFieldScene();
+    VectorFieldScene(string name);
     
     //! Set up the scene
     void setup();

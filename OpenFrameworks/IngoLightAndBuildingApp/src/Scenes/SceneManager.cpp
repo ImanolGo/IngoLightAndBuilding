@@ -62,8 +62,12 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
     m_mySceneManager.addScene(scene);
     
-    //Create Vector Field Scene
-    scene = ofPtr<ofxScene> (new VectorFieldScene());
+    //Create Impatient Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene("IMPATIENT"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Sad Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene("SAD"));
     m_mySceneManager.addScene(scene);
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();

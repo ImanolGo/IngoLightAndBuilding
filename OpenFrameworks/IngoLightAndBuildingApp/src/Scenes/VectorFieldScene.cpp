@@ -11,7 +11,10 @@
 #include "AppManager.h"
 #include "VectorFieldScene.h"
 
-VectorFieldScene::VectorFieldScene(): ofxScene("VECTOR_FIELD"){}
+VectorFieldScene::VectorFieldScene(string name): ofxScene(name)
+{
+     //Intentionally left empty
+}
 
 void VectorFieldScene::setup() {
     ofLogNotice(getName() + "::setup");
