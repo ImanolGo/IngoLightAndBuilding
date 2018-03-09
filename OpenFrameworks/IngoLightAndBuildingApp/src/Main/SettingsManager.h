@@ -63,6 +63,8 @@ public:
     int getSerialPort() const {return m_serialPort;}
     
     int getRequestTime() const {return m_requestTimeMs;}
+    
+    float getSceneTimer() const{return m_sceneTimer;}
 
     
 private:
@@ -124,5 +126,6 @@ private:
     bool                    m_autoSerial;           ///< stores whether the serial port has to be search automatically or not
     int                     m_serialPort;           ///< stores the settings serial port
     int                     m_requestTimeMs;        ///< stores the request time between checking new instagram feeds
+    float                   m_sceneTimer;           ///< time between scenes
     
 };

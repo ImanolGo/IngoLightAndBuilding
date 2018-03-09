@@ -10,7 +10,9 @@
 
 #include "VectorFieldParticle.h"
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(6)
+const float VectorFieldParticle:: SCREEN_OFFSET = 10;
+
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(6), m_randomness(0.5)
 {
     this->setup();
 }
@@ -26,8 +28,8 @@ void VectorFieldParticle::setup(){
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    m_pos.x = ofRandom(0,width);
-    m_pos.y = ofRandom(0,height);
+    m_pos.x = ofRandom(SCREEN_OFFSET,width-SCREEN_OFFSET);
+    m_pos.y = ofRandom(SCREEN_OFFSET,height-SCREEN_OFFSET);
     m_prevPos = m_pos;
     //m_color.setHsb(226, 255, 128);
     m_color = ofColor(0, 0, 255);
@@ -51,6 +53,7 @@ void VectorFieldParticle::reset()
 void VectorFieldParticle::setupBrush()
 {
     m_brush.setResource("Brush");
+    m_brush.setCentred(true);
     m_brush.setWidth(m_height,true);
 }
 
@@ -75,7 +78,7 @@ void VectorFieldParticle::update()
     m_vel+=m_acc;
     m_vel.limit(m_maxSpeed);
     m_prevPos = m_pos;
-    m_pos+= (m_vel + ofVec2f(ofRandom(-0.5,0.5),ofRandom(-0.5,0.5)));
+    m_pos+= (m_vel + ofVec2f(ofRandom(-m_randomness,m_randomness),ofRandom(-m_randomness,m_randomness)));
     m_acc = ofVec2f(0);
     
     
@@ -101,18 +104,19 @@ void VectorFieldParticle::update()
     
     if(this->isOffScreen()){
         this->stayOnScreen();
-        m_prevPos = m_pos;
+         m_prevPos = m_pos;
     }
+    
+    this->stayOnScreen();
     
     m_brush.setPosition(m_pos);
     m_brush.setColor(m_color);
 }
 
 void VectorFieldParticle::draw(){
-    
     ofPushMatrix();
     ofPushStyle();
-        //ofSetColor(m_color);
+        ofSetColor(m_color);
         //ofScale(0.5, 0.5);
         //ofSetLineWidth(m_height);
         m_brush.draw();
@@ -127,10 +131,12 @@ void VectorFieldParticle::stayOnScreen()
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    if( m_pos.x < 0 ) m_pos.x = width - 10;
-    if( m_pos.x > width) m_pos.x = 10;
-    if( m_pos.y < 0 ) m_pos.y = height - 10;
-    if( m_pos.y > height ) m_pos.y = 10;
+    if( m_pos.x < - SCREEN_OFFSET ) m_pos.x = width - SCREEN_OFFSET;
+    if( m_pos.x > width + SCREEN_OFFSET) m_pos.x = SCREEN_OFFSET;
+    
+    if( m_pos.y < - SCREEN_OFFSET ) m_pos.y = height - SCREEN_OFFSET;
+    if( m_pos.y > height + SCREEN_OFFSET ) m_pos.y = SCREEN_OFFSET;
+    
 }
 
 bool VectorFieldParticle::isOffScreen(){
@@ -138,7 +144,7 @@ bool VectorFieldParticle::isOffScreen(){
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
-    if( m_pos.x < 0 || m_pos.x >= width|| m_pos.y < 0 || m_pos.y >= height ){
+    if( m_pos.x <  - SCREEN_OFFSET || m_pos.x > width + SCREEN_OFFSET|| m_pos.y < - SCREEN_OFFSET || m_pos.y > height +  SCREEN_OFFSET ){
         
         return true;
     }

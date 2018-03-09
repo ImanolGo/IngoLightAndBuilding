@@ -110,31 +110,42 @@ void VectorFieldVisual::updateParticles()
 
 void VectorFieldVisual::updateFbo()
 {
-    float decrease = 4.0;
-    float framesToDie = 255.0/decrease;
+    float fClearOpacity =  1.0;
+    float framesToDie = 255/fClearOpacity;
     float dt = ofGetLastFrameTime();
-    float fadeTime = 2.0;
-    int numSkipFrames = fadeTime/(framesToDie*dt);
+    //float fadeTime = 2.0;
+    int numSkipFrames = m_fadeTime/(framesToDie*dt);
     m_skipFrames++;
     
-    ofEnableAlphaBlending();
+   
     m_fbo.begin();
-    //ofClear(0);
-    ofPushStyle();
+    
+    
     if(m_skipFrames>=numSkipFrames){
-        ofSetColor(0,0,0,decrease);
-        ofDrawRectangle(0,0,m_fbo.getWidth(),m_fbo.getHeight());
-        //ofDrawRectRounded(0,0,m_fbo.getWidth(),m_fbo.getHeight(), 0.1);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE);
+        glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+        
+        ofSetColor(0, (int)fClearOpacity);
+        ofFill();
+        ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
+        
         m_skipFrames = 0;
     }
+ 
+    
+    glDisable(GL_BLEND);
+    glBlendEquation(GL_FUNC_ADD);
+    glBlendFunc(GL_SRC_COLOR, GL_DST_COLOR);
+    
     
     ofSetColor(255);
     
         this->drawParticles();
     
-    ofPopStyle();
     m_fbo.end();
-    ofDisableAlphaBlending();
+    //ofDisableAlphaBlending();
+    //ofDisableBlendMode();
 }
 
 void VectorFieldVisual::draw()
@@ -152,11 +163,12 @@ void VectorFieldVisual::drawVectorField()
 void VectorFieldVisual::drawParticles()
 {
 	//ofEnableSmoothing();
+    ofEnableAlphaBlending();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
     for( int i=0; i<m_numParticles; i++){
         m_particles[i].draw();
     }
-	ofDisableBlendMode();
+	//ofDisableBlendMode();
 }
 
 
@@ -179,6 +191,13 @@ void VectorFieldVisual::setSize(float value)
 {
     for( int i=0; i<m_particles.size(); i++){
         m_particles[i].setSize(value);
+    }
+}
+
+void VectorFieldVisual::setRandomness(float value)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setRandomness(value);
     }
 }
 

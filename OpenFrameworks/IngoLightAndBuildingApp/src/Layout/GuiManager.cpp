@@ -125,17 +125,30 @@ void GuiManager::setupParticlesGui()
     m_particlesDirectionMag.addListener(particlesManager, &ParticlesManager::setDirecctionMag);
     m_parameters.add(m_particlesDirectionMag);
     
-    m_particlesSpeed.set("Speed", 0.0, 0.0, 2.0);
+    m_particlesSpeed.set("Speed", 0.0, 0.0, 5.0);
     m_particlesSpeed.addListener(particlesManager, &ParticlesManager::setSpeed);
     m_parameters.add(m_particlesSpeed);
     
-    m_particlesSize.set("Size", 6.0, 0.0, 30.0);
+    m_particlesSize.set("Size", 6.0, 0.0, 200.0);
     m_particlesSize.addListener(particlesManager, &ParticlesManager::setSize);
     m_parameters.add(m_particlesSize);
     
     m_particlesNum.set("Num", 800, 0, 800);
     m_particlesNum.addListener(particlesManager, &ParticlesManager::setNum);
     m_parameters.add(m_particlesNum);
+    
+    m_particlesFade.set("Fade", 0.0, 0.0, 60.0);
+    m_particlesFade.addListener(particlesManager, &ParticlesManager::setFadeTime);
+    m_parameters.add(m_particlesFade);
+    
+    m_particlesVectSpeed.set("Vect. Speed", 0.2, 0.0, 2.0);
+    m_particlesVectSpeed.addListener(particlesManager, &ParticlesManager::setVectorSpeed);
+    m_parameters.add(m_particlesVectSpeed);
+    
+    m_particlesRandomness.set("Randomness", 0.5, 0.0, 5.0);
+    m_particlesRandomness.addListener(particlesManager, &ParticlesManager::setRandonmess);
+    m_parameters.add(m_particlesRandomness);
+    
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("PARTICLES", ofColor::yellow);
@@ -144,6 +157,9 @@ void GuiManager::setupParticlesGui()
     folder->addSlider(m_particlesSpeed);
     folder->addSlider(m_particlesSize);
     folder->addSlider(m_particlesNum);
+    folder->addSlider(m_particlesFade);
+    folder->addSlider(m_particlesVectSpeed);
+    folder->addSlider(m_particlesRandomness);
     folder->expand();
     m_gui.addBreak();
 }

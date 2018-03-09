@@ -51,11 +51,17 @@ public:
     
     void setSpeed(float value);
     
+    void setVectSpeed(float value) {m_speed = value;}
+    
     void setSize(float value);
+    
+    void setRandomness(float value);
     
     void setNumber(int value);
 
 	void resetParticles();
+    
+    void setFadeTime(float& value) {m_fadeTime = value;}
     
    
 private:
@@ -78,7 +84,7 @@ private:
     
     void drawParticles();
     
-     void drawFbo();
+    void drawFbo();
     
     
 private:

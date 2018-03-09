@@ -58,9 +58,15 @@ void VectorFieldScene::updateVectorField()
     
     auto size =  AppManager::getInstance().getParticlesManager().getSize();
     auto num =  AppManager::getInstance().getParticlesManager().getNum();
+    auto fade = AppManager::getInstance().getParticlesManager().getFadeTime();
+    auto vectSpeed = AppManager::getInstance().getParticlesManager().getVectorSpeed();
+    auto randomness = AppManager::getInstance().getParticlesManager().getRandomness();
     
     m_vectorField.setSize(size);
     m_vectorField.setNumber(num);
+    m_vectorField.setFadeTime(fade);
+    m_vectorField.setVectSpeed(vectSpeed);
+    m_vectorField.setRandomness(randomness);
     
     m_vectorField.update();
 }
@@ -68,16 +74,17 @@ void VectorFieldScene::updateVectorField()
 
 void VectorFieldScene::updateFbo()
 {
+    ofEnableAlphaBlending();
     m_fbo.begin();
-    ofClear(0);
+    
     this->drawVectorField();
     m_fbo.end();
 }
 
 void VectorFieldScene::draw()
 {
-    ofClear(0);
-    ofBackground(255,0,0);
+    ofEnableAlphaBlending();
+
     m_fbo.draw(0,0);
 }
 

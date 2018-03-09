@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <group>
-	<TransitionTime>1.35</TransitionTime>
-	<Direction>301.35</Direction>
-	<Dir__Mag_>0</Dir__Mag_>
-	<Speed>2</Speed>
-	<Size>8.76</Size>
-	<Num>656</Num>
+	<TransitionTime>1.69</TransitionTime>
+	<Direction>244.72</Direction>
+	<Dir__Mag_>0.67</Dir__Mag_>
+	<Speed>2.58</Speed>
+	<Size>14.61</Size>
+	<Num>800</Num>
+	<Fade>4.38</Fade>
+	<Vect__Speed>0.04</Vect__Speed>
+	<Randomness>1.18</Randomness>
 </group>

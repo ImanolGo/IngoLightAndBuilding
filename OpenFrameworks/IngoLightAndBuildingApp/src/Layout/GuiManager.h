@@ -102,7 +102,10 @@ private:
     ofParameter<float>      m_particlesDirectionMag;
     ofParameter<float>      m_particlesSpeed;
     ofParameter<float>      m_particlesSize;
+    ofParameter<float>      m_particlesFade;
     ofParameter<int>        m_particlesNum;
+    ofParameter<float>      m_particlesVectSpeed;
+    ofParameter<float>      m_particlesRandomness;
     
    
     

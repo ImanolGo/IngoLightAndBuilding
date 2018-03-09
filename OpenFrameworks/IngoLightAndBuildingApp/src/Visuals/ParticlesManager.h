@@ -48,6 +48,12 @@ class ParticlesManager: public Manager
 
         void setNum(int & value) { m_num = value;}
     
+        void setFadeTime(float & value) { m_fadeTime = value;}
+    
+        void setVectorSpeed(float & value) { m_vectorSpeed = value;}
+    
+        void setRandonmess(float & value) { m_randomness = value;}
+    
         float getDirection() {return m_direction;}
     
         float getDirectionMag() {return m_directionMag;}
@@ -58,10 +64,14 @@ class ParticlesManager: public Manager
     
         int  getNum() {return m_num;}
     
-        
-
-    private:
+        float getFadeTime() {return m_fadeTime;}
     
+        float getVectorSpeed() {return m_vectorSpeed;}
+    
+        float getRandomness() {return m_randomness;}
+    
+    
+    private:
     
     
     private:
@@ -70,6 +80,9 @@ class ParticlesManager: public Manager
         float       m_directionMag;
         float       m_speed;
         float       m_size;
+        float       m_fadeTime;
+        float       m_vectorSpeed;
+        float       m_randomness;
         int         m_num;
 };
 

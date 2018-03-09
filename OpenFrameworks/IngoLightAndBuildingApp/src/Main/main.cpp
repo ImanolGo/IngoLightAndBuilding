@@ -5,7 +5,8 @@
 int main() {
 
 	ofGLWindowSettings settings;
-	settings.setGLVersion(3, 2);    // <--- ofxShadertoy NEEDS the GL Programmable Renderer
+	//settings.setGLVersion(3, 2);    // <--- ofxShadertoy NEEDS the GL Programmable Renderer
+    settings.setGLVersion(2, 1);    // <--- ofxShadertoy NEEDS the GL Programmable Renderer
     settings.setSize(1024,768);
 	ofCreateWindow(settings);       // <-------- setup the GL context
 

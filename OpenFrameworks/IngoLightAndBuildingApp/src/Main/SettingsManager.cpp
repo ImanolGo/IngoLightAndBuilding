@@ -16,7 +16,7 @@
 const string SettingsManager::APPLICATION_SETTINGS_FILE_NAME = "xmls/ApplicationSettings.xml";
 
 
-SettingsManager::SettingsManager(): Manager(), m_appHeight(0.0), m_appWidth(0.0)
+SettingsManager::SettingsManager(): Manager(), m_appHeight(0.0), m_appWidth(0.0), m_sceneTimer(0.0)
 {
     //Intentionally left empty
 }
@@ -139,7 +139,9 @@ void SettingsManager::loadAppSettings()
         
         m_requestTimeMs = xml.getAttribute("request_time_ms").getIntValue();
         
-        ofLogNotice() <<"SettingsManager::loadAppSettings->  request time = " << m_requestTimeMs << "ms";
+        m_sceneTimer = xml.getAttribute("sceneTimer").getFloatValue();
+        
+        ofLogNotice() <<"SettingsManager::loadAppSettings->  request time = " << m_requestTimeMs << "ms" << ", scene time = " << m_sceneTimer << "s";
         ofLogNotice() <<"SettingsManager::loadAppSettings->  successfully loaded the app settings" ;
         return;
     }

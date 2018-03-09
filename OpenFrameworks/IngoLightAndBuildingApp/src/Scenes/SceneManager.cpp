@@ -88,7 +88,8 @@ void SceneManager::setupFbo()
 
 void SceneManager::setupTimer()
 {
-    m_sceneTimer.setup( 30*1000 );
+    auto time = AppManager::getInstance().getSettingsManager().getSceneTimer();
+    m_sceneTimer.setup( 120*1000 );
     m_sceneTimer.start( false ) ;
     ofAddListener( m_sceneTimer.TIMER_COMPLETE , this, &SceneManager::sceneTimerCompleteHandler ) ;
     

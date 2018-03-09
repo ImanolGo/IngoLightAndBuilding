@@ -20,6 +20,8 @@
 
 class VectorFieldParticle
 {
+    static const float SCREEN_OFFSET;
+
 public:
     
     //! Constructor
@@ -35,6 +37,8 @@ public:
     void draw();
     
     void addForce(const ofVec2f& dir);
+    
+    void setRandomness(float value) {m_randomness = value;}
     
     void setMaxSpeed(float speed) {m_maxSpeed = speed;}
     
@@ -69,5 +73,5 @@ private:
     
     int      m_duration;
     float   m_height;
-    
+    float   m_randomness;
 };
