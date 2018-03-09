@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-const float VectorFieldParticle:: SCREEN_OFFSET = 10;
+const float VectorFieldParticle:: SCREEN_OFFSET = 5;
 
 VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(6), m_randomness(0.5)
 {

@@ -69,6 +69,8 @@ public:
     
     void onChangeSceneDuration(float& value);
     
+    string getCurrentSceneName() const {return m_currentSceneName;}
+    
 private:
     
     //! Create the scenes

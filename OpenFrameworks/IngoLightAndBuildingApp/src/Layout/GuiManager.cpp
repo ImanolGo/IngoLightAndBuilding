@@ -14,6 +14,7 @@
 
 
 const string GuiManager::GUI_SETTINGS_FILE_NAME = "xmls/GuiSettings.xml";
+const string GuiManager::PRESETS_PREFIX = "xmls/Presets_";
 const string GuiManager::GUI_SETTINGS_NAME = "GUI";
 const int GuiManager::GUI_WIDTH = 350;
 
@@ -50,6 +51,8 @@ void GuiManager::setup()
 
 void GuiManager::setupGuiParameters()
 {
+    ofxDatGuiLog::quiet();
+    
     m_gui.setPosition(ofxDatGuiAnchor::TOP_LEFT);
    // m_gui.setAssetPath(ofToDataPath("fonts/"));
     //m_gui.setAssetPath("../Resources/data/fonts/");
@@ -119,36 +122,35 @@ void GuiManager::setupParticlesGui()
     
     m_particlesDirection.set("Direction", 0.0, 0.0, 360.0);
     m_particlesDirection.addListener(particlesManager, &ParticlesManager::setDirecction);
-    m_parameters.add(m_particlesDirection);
+    m_presets.add(m_particlesDirection);
     
     m_particlesDirectionMag.set("Dir. Mag.", 0.0, 0.0, 2.0);
     m_particlesDirectionMag.addListener(particlesManager, &ParticlesManager::setDirecctionMag);
-    m_parameters.add(m_particlesDirectionMag);
+    m_presets.add(m_particlesDirectionMag);
     
     m_particlesSpeed.set("Speed", 0.0, 0.0, 5.0);
     m_particlesSpeed.addListener(particlesManager, &ParticlesManager::setSpeed);
-    m_parameters.add(m_particlesSpeed);
+    m_presets.add(m_particlesSpeed);
     
     m_particlesSize.set("Size", 6.0, 0.0, 200.0);
     m_particlesSize.addListener(particlesManager, &ParticlesManager::setSize);
-    m_parameters.add(m_particlesSize);
+    m_presets.add(m_particlesSize);
     
     m_particlesNum.set("Num", 800, 0, 800);
     m_particlesNum.addListener(particlesManager, &ParticlesManager::setNum);
-    m_parameters.add(m_particlesNum);
+    m_presets.add(m_particlesNum);
     
     m_particlesFade.set("Fade", 0.0, 0.0, 60.0);
     m_particlesFade.addListener(particlesManager, &ParticlesManager::setFadeTime);
-    m_parameters.add(m_particlesFade);
+    m_presets.add(m_particlesFade);
     
     m_particlesVectSpeed.set("Vect. Speed", 0.2, 0.0, 2.0);
     m_particlesVectSpeed.addListener(particlesManager, &ParticlesManager::setVectorSpeed);
-    m_parameters.add(m_particlesVectSpeed);
+    m_presets.add(m_particlesVectSpeed);
     
     m_particlesRandomness.set("Randomness", 0.5, 0.0, 5.0);
     m_particlesRandomness.addListener(particlesManager, &ParticlesManager::setRandonmess);
-    m_parameters.add(m_particlesRandomness);
-    
+    m_presets.add(m_particlesRandomness);
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("PARTICLES", ofColor::yellow);
@@ -211,6 +213,25 @@ void GuiManager::loadGuiValues()
    // xml.deserialize(m_parameters);
 }
 
+
+void GuiManager::savePresetsValues(const string& sceneName)
+{
+    ofXml xml;
+    
+    ofSerialize(xml, m_presets);
+    // xml.serialize(m_parameters);
+    string xmlName = PRESETS_PREFIX + sceneName +".xml";
+    xml.save(xmlName);
+}
+
+void GuiManager::loadPresetsValues(const string& sceneName)
+{
+    ofXml xml;
+    string xmlName = PRESETS_PREFIX + sceneName +".xml";
+    xml.load(xmlName);
+    ofDeserialize(xml, m_presets);
+    // xml.deserialize(m_parameters);
+}
 
 void GuiManager::toggleGui()
 {

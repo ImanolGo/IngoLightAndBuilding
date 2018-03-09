@@ -76,15 +76,16 @@ void VectorFieldScene::updateFbo()
 {
     ofEnableAlphaBlending();
     m_fbo.begin();
-    
+    //ofClear(0);
     this->drawVectorField();
     m_fbo.end();
 }
 
 void VectorFieldScene::draw()
 {
+    
     ofEnableAlphaBlending();
-
+    ofClear(0);
     m_fbo.draw(0,0);
 }
 
@@ -96,9 +97,8 @@ void VectorFieldScene::drawVectorField()
 
 void VectorFieldScene::willFadeIn() {
     ofLogNotice("VectorFieldScene::willFadeIn");
-
+    AppManager::getInstance().getGuiManager().loadPresetsValues(getName());
     m_vectorField.resetParticles();
-    ofLogNotice("VectorFieldScene::willFadeIn");
 }
 
 void VectorFieldScene::willDraw() {
@@ -107,6 +107,7 @@ void VectorFieldScene::willDraw() {
 
 void VectorFieldScene::willFadeOut() {
     ofLogNotice("VectorFieldScene::willFadeOut");
+    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
 }
 
 void VectorFieldScene::willExit() {

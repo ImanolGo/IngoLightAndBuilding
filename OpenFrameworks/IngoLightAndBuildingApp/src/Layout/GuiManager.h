@@ -23,6 +23,7 @@ class GuiManager: public Manager
 {
     static const string GUI_SETTINGS_FILE_NAME;
     static const string GUI_SETTINGS_NAME;
+    static const string PRESETS_PREFIX;
     static const int GUI_WIDTH;
     
 public:
@@ -72,6 +73,10 @@ public:
     
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
     
+    void savePresetsValues(const string& sceneName);
+    
+    void loadPresetsValues(const string& sceneName);
+    
     
 private:
     
@@ -89,12 +94,14 @@ private:
     
     void drawRectangle();
 
+
 private:
     
 
     ofxDatGui               m_gui;
     
     ofParameterGroup        m_parameters;
+    ofParameterGroup        m_presets;
     
     ofParameter<float>      m_sceneTransitionTime;
     
@@ -106,6 +113,8 @@ private:
     ofParameter<int>        m_particlesNum;
     ofParameter<float>      m_particlesVectSpeed;
     ofParameter<float>      m_particlesRandomness;
+    
+    vector<ofParameter<int> > m_colorHexVector;
     
    
     
