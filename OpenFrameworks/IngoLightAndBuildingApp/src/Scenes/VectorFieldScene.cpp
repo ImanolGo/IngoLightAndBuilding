@@ -47,30 +47,16 @@ void VectorFieldScene::update() {
 
 void VectorFieldScene::updateVectorField()
 {
-    float direction = AppManager::getInstance().getParticlesManager().getDirection();
-    float angleRadiands = degree2radian(direction);
-    float mag = AppManager::getInstance().getParticlesManager().getDirectionMag();
-    float speed = AppManager::getInstance().getParticlesManager().getSpeed();
-    
+    auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
+    float angleRadiands = degree2radian(parameters.direction);
+
     ofVec2f force;
-    force.x = -mag*sin(angleRadiands);
-    force.y = mag*cos(angleRadiands);
-    
+    force.x = -parameters.directionMag*sin(angleRadiands);
+    force.y = parameters.directionMag*cos(angleRadiands);
     m_vectorField.addForce(force);
-    m_vectorField.setSpeed(speed);
-    
-    auto size =  AppManager::getInstance().getParticlesManager().getSize();
-    auto num =  AppManager::getInstance().getParticlesManager().getNum();
-    auto fade = AppManager::getInstance().getParticlesManager().getFadeTime();
-    auto vectSpeed = AppManager::getInstance().getParticlesManager().getVectorSpeed();
-    auto randomness = AppManager::getInstance().getParticlesManager().getRandomness();
-    
-    m_vectorField.setSize(size);
-    m_vectorField.setNumber(num);
-    m_vectorField.setFadeTime(fade);
-    m_vectorField.setVectSpeed(vectSpeed);
-    m_vectorField.setRandomness(randomness);
-    
+
+
+    m_vectorField.addParameters(parameters);    
     m_vectorField.update();
 }
 

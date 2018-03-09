@@ -10,6 +10,7 @@
 
 #include "ofxVectorField.h"
 #include "VectorFieldParticle.h"
+#include "ParticlesManager.h"
 #include "ofxBlur.h"
 #include "ofxPostProcessing.h"
 
@@ -48,6 +49,8 @@ public:
     void draw();
     
     void addForce(const ofVec2f& force);
+    
+    void addParameters(ParticleParameters& parameters);
     
     void setSpeed(float value);
     

@@ -13,7 +13,7 @@
 #include "AppManager.h"
 
 
-ParticlesManager::ParticlesManager(): Manager(), m_direction(0), m_directionMag(0),m_speed(1.0), m_size(6.0), m_num(100), m_fadeTime(2.0), m_vectorSpeed(0.2), m_randomness(0.5)
+ParticlesManager::ParticlesManager(): Manager()
 {
 	//Intentionally left empty
 }

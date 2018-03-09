@@ -140,6 +140,12 @@ void GuiManager::setupPaletteGui()
 }
 
 
+ofColor GuiManager::getColor(int index)
+{
+    string colorName = "COLOR " + ofToString(index);
+    return m_gui.getColorPicker(colorName)->getColor();
+}
+
 void GuiManager::setupParticlesGui()
 {
     auto particlesManager = &AppManager::getInstance().getParticlesManager();

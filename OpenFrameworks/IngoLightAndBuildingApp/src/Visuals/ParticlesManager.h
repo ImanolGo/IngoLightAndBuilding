@@ -19,6 +19,20 @@
  *	\details it holds all the different particle parameters and saves them according to each scene
  */
 
+struct ParticleParameters
+{
+    float       direction;
+    float       directionMag;
+    float       speed;
+    float       size;
+    float       fadeTime;
+    float       vectorSpeed;
+    float       randomness;
+    int         num;
+    
+    ParticleParameters():direction(0), directionMag(0),speed(1.0), size(6.0), num(100), fadeTime(2.0), vectorSpeed(0.2), randomness(0.5){}
+};
+
 
 class ParticlesManager: public Manager
 {
@@ -38,52 +52,28 @@ class ParticlesManager: public Manager
         void update();
 
 
-        void setDirecction(float & value) { m_direction = value;}
+        void setDirecction(float & value) { m_parameters.direction = value;}
 
-        void setDirecctionMag(float & value) { m_directionMag = value;}
+        void setDirecctionMag(float & value) { m_parameters.directionMag = value;}
 
-        void setSpeed(float & value) { m_speed = value;}
+        void setSpeed(float & value) { m_parameters.speed = value;}
 
-        void setSize(float & value) { m_size = value;}
+        void setSize(float & value) { m_parameters.size = value;}
 
-        void setNum(int & value) { m_num = value;}
+        void setNum(int & value) { m_parameters.num = value;}
     
-        void setFadeTime(float & value) { m_fadeTime = value;}
+        void setFadeTime(float & value) { m_parameters.fadeTime = value;}
     
-        void setVectorSpeed(float & value) { m_vectorSpeed = value;}
+        void setVectorSpeed(float & value) { m_parameters.vectorSpeed = value;}
     
-        void setRandonmess(float & value) { m_randomness = value;}
+        void setRandonmess(float & value) { m_parameters.randomness = value;}
     
-        float getDirection() {return m_direction;}
-    
-        float getDirectionMag() {return m_directionMag;}
-    
-        float getSpeed() {return m_speed;}
-    
-        float getSize() {return m_size;}
-    
-        int  getNum() {return m_num;}
-    
-        float getFadeTime() {return m_fadeTime;}
-    
-        float getVectorSpeed() {return m_vectorSpeed;}
-    
-        float getRandomness() {return m_randomness;}
-    
-    
+        const ParticleParameters& getParameters() const {return m_parameters;}
+
     private:
     
-    
-    private:
+        ParticleParameters m_parameters;
 
-        float       m_direction;
-        float       m_directionMag;
-        float       m_speed;
-        float       m_size;
-        float       m_fadeTime;
-        float       m_vectorSpeed;
-        float       m_randomness;
-        int         m_num;
 };
 
 

@@ -172,6 +172,18 @@ void VectorFieldVisual::drawParticles()
 }
 
 
+void VectorFieldVisual::addParameters(ParticleParameters& parameters)
+{
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setMaxSpeed(parameters.speed);
+        m_particles[i].setSize(parameters.size);
+        m_particles[i].setRandomness(parameters.randomness);
+    }
+    
+    m_numParticles = (int) ofClamp(parameters.num, 0, m_particles.size());
+    m_fadeTime = parameters.fadeTime;
+    m_speed = parameters.vectorSpeed;
+}
 
 void VectorFieldVisual::addForce(const ofVec2f& force)
 {
