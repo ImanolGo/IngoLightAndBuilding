@@ -77,6 +77,8 @@ private:
     
     void setupFbo();
     
+    void setupShader();
+    
     void setupBlur();
     
     void setupParticles();
@@ -107,6 +109,9 @@ private:
     ofFbo       m_fbo;
     ofxBlur     m_blur;
     int         m_numParticles;
+    ofShader    m_thickLineShader;
+    float       m_size;
+    
    // ofxPostProcessing m_post;
     
     

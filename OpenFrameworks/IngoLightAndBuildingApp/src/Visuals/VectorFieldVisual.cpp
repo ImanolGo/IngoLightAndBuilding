@@ -13,7 +13,7 @@
 const int VectorFieldVisual::NUM_PARTICLES = 800;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(8)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(8), m_size(20)
 {
     //Intentionaly left empty
 }
@@ -28,9 +28,10 @@ VectorFieldVisual::~VectorFieldVisual()
 void VectorFieldVisual::setup()
 {
     this->setupFbo();
+    this->setupShader();
     this->setupVectorField();
     this->setupParticles();
-    //this->setupBlur();
+    this->setupBlur();
 }
 
 
@@ -40,6 +41,22 @@ void VectorFieldVisual::setupFbo()
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     m_fbo.allocate(width,height);
     m_fbo.begin(); ofClear(0); m_fbo.end();
+}
+
+void VectorFieldVisual::setupShader()
+{
+    m_thickLineShader.unload();
+    m_thickLineShader.setGeometryInputType(GL_LINES);
+    m_thickLineShader.setGeometryOutputType(GL_TRIANGLE_STRIP);
+    m_thickLineShader.setGeometryOutputCount(4);
+    
+    if(ofIsGLProgrammableRenderer()){
+        m_thickLineShader.load("shaders/shadersGL3/ThickLineShaderVert.glsl", "shaders/shadersGL3/ThickLineShaderFrag.glsl", "shaders/shadersGL3/ThickLineShaderGeom.glsl");
+    }
+    else{
+         m_thickLineShader.load("shaders/shadersGL2/ThickLineShaderVert.glsl", "shaders/shadersGL2/ThickLineShaderFrag.glsl", "shaders/shadersGL2/ThickLineShaderGeom.glsl");
+    }
+   
 }
 
 void VectorFieldVisual::setupVectorField()
@@ -54,10 +71,9 @@ void VectorFieldVisual::setupVectorField()
     
     // adjust the vector field by normalizing, scaling, biasing & blurring (to make it look nice)
     m_vectorField.normalize();
-    m_vectorField.scale(20);
-    m_vectorField.bias(1, 0);
-    m_vectorField.blur();
-    
+    m_vectorField.scale(40);
+    m_vectorField.bias(1, 1);
+    //m_vectorField.blur();
 }
 
 void VectorFieldVisual::setupParticles()
@@ -74,6 +90,8 @@ void VectorFieldVisual::resetParticles()
 	{
 		m_particles[i].reset();
 	}
+    
+    this->setupShader();
 }
 void VectorFieldVisual::setupBlur()
 {
@@ -102,7 +120,7 @@ void VectorFieldVisual::updateParticles()
     
     for( int i=0; i<m_particles.size(); i++)
     {
-        auto force = m_vectorField.getVectorInterpolated(m_particles[i].getPos().x, m_particles[i].getPos().y, width, height);
+        auto force = m_vectorField.getVectorInterpolated(m_particles[i].getPos().x, m_particles[i].getPos().y, width, height*1.2);
         m_particles[i].addForce(force);
         m_particles[i].update();
     }
@@ -151,7 +169,6 @@ void VectorFieldVisual::updateFbo()
 void VectorFieldVisual::draw()
 {
 	m_fbo.draw(0, 0);
-    
 }
 
 
@@ -163,12 +180,19 @@ void VectorFieldVisual::drawVectorField()
 void VectorFieldVisual::drawParticles()
 {
 	//ofEnableSmoothing();
-    ofEnableAlphaBlending();
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //ofEnableAlphaBlending();
+	//ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //m_blur.begin();
+    m_thickLineShader.begin();
+    m_thickLineShader.setUniform1f("thickness", m_size);
     for( int i=0; i<m_numParticles; i++){
         m_particles[i].draw();
     }
-	ofDisableBlendMode();
+    
+    m_thickLineShader.end();
+     //m_blur.end();
+    // m_blur.draw();
+	//ofDisableBlendMode();
 }
 
 
@@ -179,6 +203,8 @@ void VectorFieldVisual::addParameters(ParticleParameters& parameters)
         m_particles[i].setSize(parameters.size);
         m_particles[i].setRandomness(parameters.randomness);
     }
+    
+    m_size = parameters.size;
     
     m_numParticles = (int) ofClamp(parameters.num, 0, m_particles.size());
     m_fadeTime = parameters.fadeTime;

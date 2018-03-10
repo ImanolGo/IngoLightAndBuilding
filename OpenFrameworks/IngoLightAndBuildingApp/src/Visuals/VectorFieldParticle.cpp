@@ -10,7 +10,7 @@
 
 #include "VectorFieldParticle.h"
 
-const float VectorFieldParticle:: SCREEN_OFFSET = 5;
+const float VectorFieldParticle:: SCREEN_OFFSET = 2;
 
 VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(6), m_randomness(0.5)
 {
@@ -81,7 +81,7 @@ void VectorFieldParticle::update()
     m_pos+= (m_vel + ofVec2f(ofRandom(-m_randomness,m_randomness),ofRandom(-m_randomness,m_randomness)));
     m_acc = ofVec2f(0);
     
-    m_color.setBrightness(10);
+    //m_color.setBrightness(10);
     
     //float adj = ofMap(m_pos.y, 0, height, 1.0, 0);
     //float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.0, 1.0,0.0,1.0,true);
@@ -119,8 +119,8 @@ void VectorFieldParticle::draw(){
         ofSetColor(m_color);
         //ofScale(0.5, 0.5);
         //ofSetLineWidth(m_height);
-        m_brush.draw();
-        //ofDrawLine(m_prevPos,m_pos);
+        //m_brush.draw();
+        ofDrawLine(m_prevPos,m_pos);
         //ofDrawRectRounded(-width*0.5,-height*0.5,m_fbo.getWidth(),height, 0.1);
     ofPopStyle();
     ofPopMatrix();
