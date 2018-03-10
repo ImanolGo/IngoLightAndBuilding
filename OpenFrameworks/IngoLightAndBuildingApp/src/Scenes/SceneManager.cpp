@@ -50,10 +50,6 @@ void SceneManager::createScenes()
     
     ofPtr<ofxScene> scene;
     
-    //Create Blank Scene
-    scene = ofPtr<ofxScene> (new BlankScene());
-    m_mySceneManager.addScene(scene);
-    
     //Create Video Scene
     scene = ofPtr<ofxScene> (new VideoScene("TEST_VIDEO"));
     m_mySceneManager.addScene(scene);
@@ -68,6 +64,11 @@ void SceneManager::createScenes()
     
     //Create Sad Scene
     scene = ofPtr<ofxScene> (new VectorFieldScene("SAD"));
+    m_mySceneManager.addScene(scene);
+    
+    
+    //Create Blank Scene
+    scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
     
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();

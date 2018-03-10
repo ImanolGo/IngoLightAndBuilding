@@ -37,11 +37,6 @@ public:
 
     void update();
     
-    void onSetColor(const ofColor& color);
-    
-    void onSetDisco();
-    
-    void onSetSolid();
     
 private:
     
@@ -58,6 +53,8 @@ private:
     void sendPin();
     
     bool receivedOk();
+    
+    void readCommands();
     
 private:
     

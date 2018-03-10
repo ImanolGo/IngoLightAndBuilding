@@ -20,8 +20,6 @@ SerialManager::SerialManager(): Manager(), m_connected(false)
 SerialManager::~SerialManager()
 {
    ofLogNotice() << "SerialManager::destructor";
-   this->onSetSolid();
-   this->onSetColor(ofColor::black);
 }
 
 
@@ -132,8 +130,8 @@ bool SerialManager::receivedOk()
     }
     
     /// // we want to read 2 bytes
-    int bytesRequired = 2;
-    unsigned char bytes[2];
+    int bytesRequired = 4;
+    unsigned char bytes[4];
     int bytesRemaining = bytesRequired;
     // loop until we've read everything
     while ( bytesRemaining > 0 ){
@@ -170,42 +168,50 @@ bool SerialManager::receivedOk()
 
 void SerialManager::update()
 {
-    //
+    this->readCommands();
 }
 
-
-void SerialManager::onSetColor(const ofColor& color)
+void SerialManager::readCommands()
 {
-    if(!m_connected){
+    if ( m_serial.available() == 0 )
+    {
         return;
     }
     
-    unsigned char bytes[5];
-    
-    bytes[0] = 'c';
-    bytes[1] = color.r;
-    bytes[2] = color.g;
-    bytes[3] = color.b;
-    bytes[4] = '\n';
-    
-    m_serial.writeBytes(bytes,sizeof(bytes));
-
-}
-
-
-void SerialManager::onSetDisco()
-{
-    if(!m_connected){
-        return;
+    /// // we want to read 3 bytes
+    int bytesRequired = 3;
+    unsigned char bytes[3];
+    int bytesRemaining = bytesRequired;
+    // loop until we've read everything
+    while ( bytesRemaining > 0 ){
+        // check for data
+        if ( m_serial.available() > 0 ){
+            // try to read - note offset into the bytes[] array, this is so
+            // that we don't overwrite the bytes we already have
+            int bytesArrayOffset = bytesRequired - bytesRemaining;
+            int result = m_serial.readBytes( &bytes[bytesArrayOffset], bytesRemaining );
+            
+            // check for error code
+            if ( result == OF_SERIAL_ERROR ){
+                // something bad happened
+                ofLog( OF_LOG_ERROR, "unrecoverable error reading from serial" );
+                break;
+            }
+            else if ( result == OF_SERIAL_NO_DATA ){
+                // nothing was read, try again
+            }
+            else {
+                // we read some data!
+                bytesRemaining -= result;
+            }
+        }
     }
     
-    m_serial.writeByte('d');
+    ofLogNotice() <<"SerialManager::readCommands << Arduino sent  " << bytes[0];
+    
+    AppManager::getInstance().getGuiManager().onSceneChange((int)bytes[0]-48);
+    
 }
 
-void SerialManager::onSetSolid()
-{
-    if(!m_connected){
-        return;
-    }
-    m_serial.writeByte('s');
-}
+
+
