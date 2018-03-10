@@ -120,7 +120,6 @@ void SceneManager::update()
     this->updateScenes();
     this->updateFbo();
     this->updateTimer();
-    //this->updateAlpha();
 }
 
 void SceneManager::updateFbo()
@@ -136,23 +135,6 @@ void SceneManager::updateFbo()
     m_fbo.end();
 }
 
-void SceneManager::updateAlpha()
-{    
-    if(m_alpha!=m_mySceneManager.getCurrentAlpha())
-    {
-        m_alpha=m_mySceneManager.getCurrentAlpha();
-        //ofLogNotice() <<"SceneManager::updateAlpha << Alpha = " << m_alpha;
-        
-        string address = "/CoralSoul/Ableton/Fade";
-        float value = m_alpha/255.0;
-        
-        ofxOscMessage m;
-        m.setAddress(address);
-        m.addFloatArg(value);
-        
-        AppManager::getInstance().getOscManager().sendMessage(m);
-    }
-}
 
 void SceneManager::updateScenes()
 {
@@ -183,6 +165,11 @@ void SceneManager::changeScene(string sceneName)
     m_mySceneManager.changeScene(sceneName);
     m_sceneTimer.start(false,true);
     m_currentSceneName = sceneName;
+    
+    if(m_currentSceneName!="BLANK" && !m_activeScenes){
+        m_activeScenes = true;
+        AppManager::getInstance().getInstagramManager().startFeed();
+    }
 }
 
 void SceneManager::changeScene(int sceneIndex)
@@ -190,6 +177,11 @@ void SceneManager::changeScene(int sceneIndex)
      m_mySceneManager.changeScene(sceneIndex);
      m_sceneTimer.start(false,true);
      m_currentSceneName = this->getSceneName(sceneIndex);
+    
+    if(m_currentSceneName!="BLANK" && !m_activeScenes){
+        m_activeScenes = true;
+        AppManager::getInstance().getInstagramManager().startFeed();
+    }
 }
 
 
@@ -267,7 +259,6 @@ void SceneManager::setActiveScenes(bool value)
         AppManager::getInstance().getGuiManager().onSceneChange("BLANK");
         AppManager::getInstance().getInstagramManager().stopFeed();
         this->stopScenes();
-        
     }
 }
 

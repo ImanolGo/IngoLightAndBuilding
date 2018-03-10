@@ -97,10 +97,7 @@ private:
     
     //! updates the fbo
     void updateFbo();
-    
-    //! updates the fbo
-    void updateAlpha();
-    
+
     //! next scene
     void nextScene();
     

@@ -74,6 +74,18 @@ void OscManager::update()
             AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
         }
         
+        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/ToggleActiveScenes")
+        {
+            int value = m.getArgAsInt(0);
+            AppManager::getInstance().getSceneManager().toggleActiveScenes();
+        }
+        
+        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/ActiveScenes")
+        {
+            bool value = m.getArgAsInt(0)>0;
+            AppManager::getInstance().getSceneManager().setActiveScenes(value);
+        }
+        
         ofLogNotice() <<"OscManager::received -> " << this->getMessageAsString(m);
     }    
 }

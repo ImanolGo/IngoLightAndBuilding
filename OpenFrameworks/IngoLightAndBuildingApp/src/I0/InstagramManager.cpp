@@ -151,7 +151,9 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
 
 void InstagramManager::urlTimerCompleteHandler( int &args )
 {
-    this->startFeed();
+    if(m_isSearchingTags){
+        this->startFeed();
+    }
 }
 
 void InstagramManager::startFeed()
