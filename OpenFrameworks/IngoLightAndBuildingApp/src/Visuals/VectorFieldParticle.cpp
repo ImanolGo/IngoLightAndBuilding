@@ -32,7 +32,7 @@ void VectorFieldParticle::setup(){
     m_pos.y = ofRandom(SCREEN_OFFSET,height-SCREEN_OFFSET);
     m_prevPos = m_pos;
     //m_color.setHsb(226, 255, 128);
-    m_color = ofColor(0, 0, 255);
+    m_color = ofColor(255);
     
     this->setupBrush();
 }
@@ -73,7 +73,7 @@ void VectorFieldParticle::addForce(const ofVec2f& dir)
 
 void VectorFieldParticle::update()
 {
-    float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
+    //float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     
     m_vel+=m_acc;
     m_vel.limit(m_maxSpeed);
@@ -81,11 +81,11 @@ void VectorFieldParticle::update()
     m_pos+= (m_vel + ofVec2f(ofRandom(-m_randomness,m_randomness),ofRandom(-m_randomness,m_randomness)));
     m_acc = ofVec2f(0);
     
-    
+    m_color.setBrightness(10);
     
     //float adj = ofMap(m_pos.y, 0, height, 1.0, 0);
     //float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.0, 1.0,0.0,1.0,true);
-     float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.3, 2.0,0.0,1.0,true);
+     //float adj =  ofMap(abs(m_pos.x - m_prevPos.x), 0.3, 2.0,0.0,1.0,true);
     
     //ofColor c1 = ofColor(0,164,243);
     //m_color = ofColor(120,255,214);
@@ -93,7 +93,7 @@ void VectorFieldParticle::update()
 //    ofColor r = ofColor(99,209,176);
 //    ofColor b = ofColor(0,60,220);
 //    m_color= b.getLerped(r, adj);
-    m_color = ofColor(255);
+   // m_color = ofColor(255);
     
 
     //float hue = ofLerp(246,120,adj);

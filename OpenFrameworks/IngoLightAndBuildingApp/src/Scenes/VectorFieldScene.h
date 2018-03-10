@@ -53,6 +53,8 @@ private:
     
     void drawVectorField();
     
+    void setColors();
+    
 private:
     
     VectorFieldVisual       m_vectorField;

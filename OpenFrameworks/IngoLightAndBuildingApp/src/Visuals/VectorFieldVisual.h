@@ -66,6 +66,10 @@ public:
     
     void setFadeTime(float& value) {m_fadeTime = value;}
     
+    int getNumParticles() const {return m_particles.size();}
+    
+    void setColor(int index, ofColor& color);
+    
    
 private:
     

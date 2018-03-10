@@ -48,6 +48,8 @@ public:
 
 	void reset();
     
+    void setColor(ofColor& color) {m_color = color;}
+    
 private:
     
     //! Setup the Vector Field Particle

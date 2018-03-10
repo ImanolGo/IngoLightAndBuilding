@@ -132,6 +132,7 @@ void GuiManager::setupPaletteGui()
         colorHex.set(colorName, 0, 0, 16777215);
         m_colorHexVector.push_back(colorHex);
         m_presets.add(m_colorHexVector.back());
+        m_colors.push_back(ofColor(0));
         
     }
     f1->expand();
@@ -140,10 +141,16 @@ void GuiManager::setupPaletteGui()
 }
 
 
-ofColor GuiManager::getColor(int index)
+const ofColor& GuiManager::getColor(int index)
 {
-    string colorName = "COLOR " + ofToString(index);
-    return m_gui.getColorPicker(colorName)->getColor();
+//    string colorName = "COLOR " + ofToString(index);
+//    return m_gui.getColorPicker(colorName)->getColor();
+    
+    if(index<0 || index >= m_colors.size() ){
+        return m_colors[0];
+    }
+    
+    return m_colors[index];
 }
 
 void GuiManager::setupParticlesGui()
@@ -282,12 +289,10 @@ void GuiManager::drawRectangle()
 
 void GuiManager::onResetColors()
 {
-    for(auto hexColor: m_colorHexVector){
-        
-   // for (int i = 0; i< m_colorHexVector.size(); i++){
-        
+   for (int i = 0; i< m_colorHexVector.size(); i++)
+   {
         //string colorName = "COLOR " + ofToString(i);
-        string colorName = hexColor.getName();
+        string colorName = m_colorHexVector[i].getName();
         if( m_presets.contains(colorName)){
             auto hexColor = m_presets.getInt(colorName);
             int hexValue = hexColor.get();
@@ -296,7 +301,7 @@ void GuiManager::onResetColors()
             ofLogNotice() <<"GuiManager::onResetColors << set color r: " << ofToString((int)c.r) << ", g: " <<  ofToString((int)c.g) << ", b:" <<ofToString((int)c.b);
             m_gui.getColorPicker(hexColor.getName())->setVisible(true);
             m_gui.getColorPicker(hexColor.getName())->setColor(c);
-            
+            m_colors[i] = c;
             ofLogNotice() <<"GuiManager::onResetColors << set color : " << colorName << " to " << hexValue;
         }
         

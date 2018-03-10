@@ -77,7 +77,7 @@ public:
     
     void loadPresetsValues(const string& sceneName);
     
-    ofColor getColor(int index);
+    const ofColor& getColor(int index);
     
 private:
     
@@ -122,6 +122,7 @@ private:
     ofParameter<float>      m_particlesRandomness;
     
     vector<ofParameter<int> > m_colorHexVector;
+    vector<ofColor >         m_colors;
     //vector<ofColor>          m_colors;
     
     bool        m_showGui;  //It defines the whether the gui should be shown or not

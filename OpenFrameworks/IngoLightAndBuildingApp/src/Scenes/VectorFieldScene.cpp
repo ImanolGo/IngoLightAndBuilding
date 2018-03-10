@@ -72,9 +72,10 @@ void VectorFieldScene::updateFbo()
 
 void VectorFieldScene::draw()
 {
-    
+    auto color = AppManager::getInstance().getGuiManager().getColor(0);
     ofEnableAlphaBlending();
-    ofClear(0);
+    ofClear(color);
+    //ofBackground(color);
     m_fbo.draw(0,0);
 }
 
@@ -84,10 +85,23 @@ void VectorFieldScene::drawVectorField()
 }
 
 
+void VectorFieldScene::setColors()
+{
+    int numParticles = m_vectorField.getNumParticles();
+    for(int i=0; i<numParticles; i++){
+        int index = floor(ofRandom(1,5));
+        //int index = 1;
+        auto color = AppManager::getInstance().getGuiManager().getColor(index);
+        m_vectorField.setColor(i, color);
+    }
+}
+
 void VectorFieldScene::willFadeIn() {
     ofLogNotice("VectorFieldScene::willFadeIn");
     AppManager::getInstance().getGuiManager().loadPresetsValues(getName());
+    this->setColors();
     m_vectorField.resetParticles();
+    
 }
 
 void VectorFieldScene::willDraw() {

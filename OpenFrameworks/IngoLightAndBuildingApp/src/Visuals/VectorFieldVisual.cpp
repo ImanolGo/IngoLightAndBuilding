@@ -168,7 +168,7 @@ void VectorFieldVisual::drawParticles()
     for( int i=0; i<m_numParticles; i++){
         m_particles[i].draw();
     }
-	//ofDisableBlendMode();
+	ofDisableBlendMode();
 }
 
 
@@ -183,6 +183,16 @@ void VectorFieldVisual::addParameters(ParticleParameters& parameters)
     m_numParticles = (int) ofClamp(parameters.num, 0, m_particles.size());
     m_fadeTime = parameters.fadeTime;
     m_speed = parameters.vectorSpeed;
+}
+
+void VectorFieldVisual::setColor(int index, ofColor& color)
+{
+    if(index<0 || index>= m_particles.size()){
+        return;
+    }
+    
+    m_particles[index].setColor(color);
+    
 }
 
 void VectorFieldVisual::addForce(const ofVec2f& force)
