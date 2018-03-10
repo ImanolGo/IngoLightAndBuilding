@@ -14,7 +14,7 @@
 #include "scenes.h"
 #include "AppManager.h"
 
-SceneManager::SceneManager(): Manager(), m_alpha(-1), m_transitionTime(1.0)
+SceneManager::SceneManager(): Manager(), m_alpha(-1), m_transitionTime(1.0), m_activeScenes(true)
 {
 	//Intentionally left empty
 }
@@ -94,7 +94,7 @@ void SceneManager::setupFbo()
 void SceneManager::setupTimer()
 {
     auto time = AppManager::getInstance().getSettingsManager().getSceneTimer();
-    m_sceneTimer.setup( 120*1000 );
+    m_sceneTimer.setup(time*1000 );
     m_sceneTimer.start( false ) ;
     ofAddListener( m_sceneTimer.TIMER_COMPLETE , this, &SceneManager::sceneTimerCompleteHandler ) ;
     
@@ -224,6 +224,12 @@ int SceneManager::getIndex(const string& sceneName)
 
 void SceneManager::sceneTimerCompleteHandler( int &args )
 {
+    this->nextScene();
+}
+
+
+void SceneManager::nextScene()
+{
     m_sceneTimer.start(false);
     
     if(m_sceneList.empty()){
@@ -233,9 +239,37 @@ void SceneManager::sceneTimerCompleteHandler( int &args )
     string sceneName = m_sceneList.back();  m_sceneList.pop_back();
     AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
     
-    ofLogNotice() <<"SceneManager::sceneTimerCompleteHandler << Chnage Scene: " << sceneName;
+    ofLogNotice() <<"SceneManager::nextScene << Change Scene: " << sceneName;
 }
 
+void SceneManager::stopScenes()
+{
+    m_sceneTimer.stop();
+    ofLogNotice() <<"SceneManager::nextScene << Stop Scenes!";
+}
+
+void SceneManager::toggleActiveScenes()
+{
+    this->setActiveScenes(!m_activeScenes);
+}
+
+void SceneManager::setActiveScenes(bool value)
+{
+    m_activeScenes = value;
+    
+    ofLogNotice() <<"SceneManager::setActiveScenes: " << value;
+    if(m_activeScenes){
+        this->nextScene();
+        AppManager::getInstance().getGuiManager().onSceneChange(0);
+        AppManager::getInstance().getInstagramManager().startFeed();
+    }
+    else{
+        AppManager::getInstance().getGuiManager().onSceneChange("BLANK");
+        AppManager::getInstance().getInstagramManager().stopFeed();
+        this->stopScenes();
+        
+    }
+}
 
 
 

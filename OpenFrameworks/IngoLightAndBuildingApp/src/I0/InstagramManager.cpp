@@ -10,7 +10,7 @@
 #include "AppManager.h"
 
 
-InstagramManager::InstagramManager(): Manager()
+InstagramManager::InstagramManager(): Manager(), m_isSearchingTags(true)
 {
     //Intentionally left empty
 }
@@ -46,6 +46,8 @@ void InstagramManager::setupTags()
     for(auto tag: m_tags){
         m_currentCodes[tag] = "";
     }
+    
+    m_isSearchingTags = true;
 }
 
 void InstagramManager::setupTimers()
@@ -135,6 +137,10 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
     if(response.status==200)
     {
         bool isNewTag = this->checkUpdate(response.data, response.request.name);
+        if(isNewTag&&m_isSearchingTags){
+            AppManager::getInstance().getGuiManager().onSceneChange(response.request.name);
+            ofLogNotice() <<"InstagramManager::urlResponse -> New Tag: " << response.request.name;
+        }
         
         ofLogNotice() <<"InstagramManager::urlResponse -> " << response.request.name << ", " << response.status;
         //ofLogNotice() <<"InstagramManager::urlResponse -> " << response.data;
@@ -145,8 +151,13 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
 
 void InstagramManager::urlTimerCompleteHandler( int &args )
 {
+    this->startFeed();
+}
+
+void InstagramManager::startFeed()
+{
     m_urlTimer.start(false);
-  //  cout<<"TIMER COMPLETED"<<endl;
+    //  cout<<"TIMER COMPLETED"<<endl;
     
     string start = "https://www.instagram.com/explore/tags/" ;
     string end = "/?__a=1" ;
@@ -157,10 +168,17 @@ void InstagramManager::urlTimerCompleteHandler( int &args )
         //ofLogNotice() <<"InstagramManager::urlTimerCompleteHandler -> tag " << tag << ", url: "<< url;
     }
     
-//    string url = start + m_tags.front() + end;
-//    ofLoadURLAsync(url, m_tags.front());
+    //    string url = start + m_tags.front() + end;
+    //    ofLoadURLAsync(url, m_tags.front());
+    
+    m_isSearchingTags = true;
 }
 
+void InstagramManager::stopFeed()
+{
+    m_urlTimer.stop();
+    m_isSearchingTags = false;
+}
 
 bool InstagramManager::checkAllTags(const string& result)
 {

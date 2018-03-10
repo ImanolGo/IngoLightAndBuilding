@@ -54,7 +54,9 @@ private:
     
     bool receivedOk();
     
-    void readCommands();
+    int readCommands();
+    
+    void processCommand(int value);
     
 private:
     

@@ -39,6 +39,10 @@ public:
     
     void urlTimerCompleteHandler( int &args ) ;
     
+    void startFeed();
+    
+    void stopFeed();
+    
 
 private:
     
@@ -66,6 +70,7 @@ private:
     ofxSimpleTimer     m_urlTimer;
     ofxJSONElement     m_json;
     TagMap             m_currentCodes;
+    bool               m_isSearchingTags;
 
 
 };

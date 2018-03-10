@@ -168,14 +168,17 @@ bool SerialManager::receivedOk()
 
 void SerialManager::update()
 {
-    this->readCommands();
+    int value = this->readCommands();
+    if(value>=0){
+        this->processCommand(value);
+    }
 }
 
-void SerialManager::readCommands()
+int SerialManager::readCommands()
 {
     if ( m_serial.available() == 0 )
     {
-        return;
+        return -1;
     }
     
     /// // we want to read 3 bytes
@@ -209,8 +212,18 @@ void SerialManager::readCommands()
     
     ofLogNotice() <<"SerialManager::readCommands << Arduino sent  " << bytes[0];
     
-    AppManager::getInstance().getGuiManager().onSceneChange((int)bytes[0]-48);
-    
+    return (int) bytes[0];
+}
+
+
+void SerialManager::processCommand(int value)
+{
+    if(value == 'S'){
+        AppManager::getInstance().getSceneManager().toggleActiveScenes();
+    }
+    else{
+        AppManager::getInstance().getGuiManager().onSceneChange(value - 48);
+    }
 }
 
 

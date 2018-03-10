@@ -71,6 +71,10 @@ public:
     
     string getCurrentSceneName() const {return m_currentSceneName;}
     
+    void toggleActiveScenes();
+    
+    void setActiveScenes(bool value);
+    
 private:
     
     //! Create the scenes
@@ -96,6 +100,12 @@ private:
     
     //! updates the fbo
     void updateAlpha();
+    
+    //! next scene
+    void nextScene();
+    
+    //! stop scenes
+    void stopScenes();
 
 private:
 
@@ -107,7 +117,7 @@ private:
     vector<string>           m_sceneList;
     string                   m_currentSceneName;
     float                    m_transitionTime;
-    
+    bool                     m_activeScenes;
 };
 
 //==========================================================================
