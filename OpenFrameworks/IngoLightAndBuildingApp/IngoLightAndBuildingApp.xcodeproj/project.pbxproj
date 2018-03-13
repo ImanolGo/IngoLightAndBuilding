@@ -10,6 +10,7 @@
 		00F8DAC81953313F8180A13C /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1486C841BC2A30DB7CBC449C /* ofxTextBlock.cpp */; };
 		04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D9822CFA7F77387B3BBDBC /* ftParticleFlow.cpp */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
+		083D8B09205879770034F23C /* OscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B08205879760034F23C /* OscManager.cpp */; };
 		0849AADA204F2CC50002EC96 /* VectorFieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */; };
 		0849AADE204F31500002EC96 /* ParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AADC204F31500002EC96 /* ParticlesManager.cpp */; };
 		084BAE6C2056FCA4009A638B /* TechnoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084BAE6A2056FCA3009A638B /* TechnoScene.cpp */; };
@@ -29,7 +30,6 @@
 		3287FE54B101EE0605A490C1 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDC266234685DCA3C7E6FE56 /* ofxTCPManager.cpp */; };
 		32BAF795C43C262CEE96C5C6 /* PostProcessing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CD8F947D89F5E5DC73C37FB /* PostProcessing.cpp */; };
 		333113E71EDD596780D5FC0C /* ofxBlur.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53739A80780BD4355F09B5A6 /* ofxBlur.cpp */; };
-		34CDB15CB0780633DAF598F9 /* OscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1AC164C5A14E8FB05048E /* OscManager.cpp */; };
 		3858F6C5A65122C7E9AB7A44 /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 270B9F32AC131BBF45E6B021 /* BloomPass.cpp */; };
 		39917B8907418FB9E83A1A57 /* ftDrawMouseForces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1379EA3A1B652B75D612F45 /* ftDrawMouseForces.cpp */; };
 		3A6C7D72771284673CBE247D /* ImageVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F661FE0411AA0AC01E34CB7 /* ImageVisual.cpp */; };
@@ -160,6 +160,8 @@
 		05F8E3C8BC749A2D7EFC7E4D /* ftTemperatureFieldShader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftTemperatureFieldShader.h; path = src/Addons/ofxFlowTools/src/visualisation/ftTemperatureFieldShader.h; sourceTree = SOURCE_ROOT; };
 		0731597061D6181DB86681B1 /* ofxDatGuiSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxDatGuiSlider.h; path = src/Addons/ofxDatGui/src/components/ofxDatGuiSlider.h; sourceTree = SOURCE_ROOT; };
 		07700E6618D290A6D4D41EDE /* OscPacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscPacketListener.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h; sourceTree = SOURCE_ROOT; };
+		083D8B07205879760034F23C /* OscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OscManager.h; path = I0/OscManager.h; sourceTree = "<group>"; };
+		083D8B08205879760034F23C /* OscManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OscManager.cpp; path = I0/OscManager.cpp; sourceTree = "<group>"; };
 		0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VectorFieldScene.cpp; path = Scenes/VectorFieldScene.cpp; sourceTree = "<group>"; };
 		0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		0849AADC204F31500002EC96 /* ParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticlesManager.cpp; path = Visuals/ParticlesManager.cpp; sourceTree = "<group>"; };
@@ -223,7 +225,6 @@
 		3717899B85A3DBA081F4B3D0 /* ftDecayShader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftDecayShader.h; path = src/Addons/ofxFlowTools/src/filters/ftDecayShader.h; sourceTree = SOURCE_ROOT; };
 		39E51899797C321030D8DF13 /* ofxTextBlock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxTextBlock.h; path = src/Addons/ofxTextSuite/src/ofxTextBlock.h; sourceTree = SOURCE_ROOT; };
 		3A260C79069FA7DEF9728CEC /* KeyboardManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = KeyboardManager.cpp; path = src/I0/KeyboardManager.cpp; sourceTree = SOURCE_ROOT; };
-		3AA1AC164C5A14E8FB05048E /* OscManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscManager.cpp; path = src/I0/OscManager.cpp; sourceTree = SOURCE_ROOT; };
 		3B4950E016D7B00509804496 /* ofxTCPServer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxTCPServer.cpp; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxNetwork/src/ofxTCPServer.cpp; sourceTree = SOURCE_ROOT; };
 		3C01FEEAD29823C01C4EEC27 /* CameraAnimationsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CameraAnimationsManager.cpp; path = src/Engine/3D/CameraAnimationsManager.cpp; sourceTree = SOURCE_ROOT; };
 		3C4EA15C90BCFE1FFC1245B1 /* BlankScene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = BlankScene.cpp; path = src/Scenes/BlankScene.cpp; sourceTree = SOURCE_ROOT; };
@@ -400,7 +401,6 @@
 		CD95C3C0E19F75911F78ADC0 /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ZoomBlurPass.cpp; path = src/Addons/ofxPostProcessing/src/ZoomBlurPass.cpp; sourceTree = SOURCE_ROOT; };
 		CDA8ACA571B1A053ABF99DAC /* ofxOscSender.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxOscSender.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/src/ofxOscSender.h; sourceTree = SOURCE_ROOT; };
 		D157CA713BE6B83E7D4EED72 /* OscTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscTypes.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h; sourceTree = SOURCE_ROOT; };
-		D1C77A5B38BC862739AEC400 /* OscManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscManager.h; path = src/I0/OscManager.h; sourceTree = SOURCE_ROOT; };
 		D2254993DACD6F6C4E170594 /* ftVelocityField.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftVelocityField.h; path = src/Addons/ofxFlowTools/src/visualisation/ftVelocityField.h; sourceTree = SOURCE_ROOT; };
 		D22E2081785A2CC7B4D27AE3 /* ftDrawForce.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftDrawForce.h; path = src/Addons/ofxFlowTools/src/drawforces/ftDrawForce.h; sourceTree = SOURCE_ROOT; };
 		D26C09D837E4FD6CBDBE2B8C /* AppManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = AppManager.h; path = src/Main/AppManager.h; sourceTree = SOURCE_ROOT; };
@@ -471,12 +471,12 @@
 		0564C083037E0848473DDC94 /* I0 */ = {
 			isa = PBXGroup;
 			children = (
+				083D8B08205879760034F23C /* OscManager.cpp */,
+				083D8B07205879760034F23C /* OscManager.h */,
 				6786331CB5006A6085139FB5 /* InstagramManager.cpp */,
 				99851E0A03BC9BF848889341 /* InstagramManager.h */,
 				3A260C79069FA7DEF9728CEC /* KeyboardManager.cpp */,
 				09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */,
-				3AA1AC164C5A14E8FB05048E /* OscManager.cpp */,
-				D1C77A5B38BC862739AEC400 /* OscManager.h */,
 				540DEC411270860252F5D474 /* SerialManager.cpp */,
 				8365FEA702EA72E2FFA366D9 /* SerialManager.h */,
 			);
@@ -1503,6 +1503,7 @@
 				A6F9B2E3C2F68F92EDECB6E4 /* ContrastPass.cpp in Sources */,
 				809B0D0AA188CF0F15F4D0E2 /* ConvolutionPass.cpp in Sources */,
 				65E588AA75CD1992180164AC /* DofAltPass.cpp in Sources */,
+				083D8B09205879770034F23C /* OscManager.cpp in Sources */,
 				EED88B9908EEF9CF82D2EA5D /* DofPass.cpp in Sources */,
 				94A5BE8D9E5D956B6F719756 /* EdgePass.cpp in Sources */,
 				F21D9E004F4E33C8FEBB6BC8 /* FakeSSSPass.cpp in Sources */,
@@ -1552,7 +1553,6 @@
 				464E1F0B45212D33D8587BC7 /* InstagramManager.cpp in Sources */,
 				5152A5DBF51A461014A1F631 /* KeyboardManager.cpp in Sources */,
 				0849AADE204F31500002EC96 /* ParticlesManager.cpp in Sources */,
-				34CDB15CB0780633DAF598F9 /* OscManager.cpp in Sources */,
 				F19705C8043A4DD85C149E25 /* SerialManager.cpp in Sources */,
 				5D33A9513B2A4C6DBD3188C7 /* GuiManager.cpp in Sources */,
 				93510377552D47B6620A7586 /* LayoutManager.cpp in Sources */,

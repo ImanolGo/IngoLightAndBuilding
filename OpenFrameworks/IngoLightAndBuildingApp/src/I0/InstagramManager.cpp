@@ -41,11 +41,9 @@ void InstagramManager::setup()
 
 void InstagramManager::setupTags()
 {
-    m_tags = AppManager::getInstance().getSettingsManager().getTags();
-    
-    for(auto tag: m_tags){
-        m_currentCodes[tag] = "";
-    }
+    m_triggerTags.push_back("emotions");
+    //m_triggerTags.push_back("ingomaurer");
+    m_emotionTags = {"ecstatic", "techno­stressed", "melancholy", "calm", "sad", "lonely", "impatient", "loved", "cheerful", "curious"};
     
     m_isSearchingTags = true;
 }
@@ -70,10 +68,11 @@ void InstagramManager::updateTimers()
     m_urlTimer.update();
 }
 
+
 bool InstagramManager::checkUpdate(const string& result, const string& tag)
 {
    
-    if ( std::find(m_tags.begin(), m_tags.end(), tag) == m_tags.end() )
+    if ( std::find(m_triggerTags.begin(), m_triggerTags.end(), tag) == m_triggerTags.end() )
     {
         return false;
     }
@@ -83,30 +82,20 @@ bool InstagramManager::checkUpdate(const string& result, const string& tag)
     
     //ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ", code: "<< codeString;
     
-    if ( m_currentCodes.find(tag) == m_currentCodes.end() )
-    {
-        return false;
-    }
-    
-   
-    
-    if(m_currentCodes[tag]!=codeString){
-        m_currentCodes[tag]=codeString;
+    if(m_currentCode!=codeString){
+        m_currentCode=codeString;
         
         string hashtagString = this->parseJsonTag(result);
-        
-         ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ", code: "<< codeString;
-         ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ": text"<< hashtagString;
-        
-        return true;
-//        if(this->checkAllTags(hashtagString)){
-//            m_currentString = hashtagString;
-//            return true;
-//        }
+        ofLogNotice() <<"InstagramManager::parseJson -> " << tag << ": "<< m_currentCode;
+        ofLogNotice() <<"InstagramManager::result -> " << hashtagString;
+        if(this->checkEmotionTags(hashtagString)){
+            m_currentString = hashtagString;
+            return true;
+        }
         
     }
     
-     return false;
+    return false;
     
     // cout << json["tag"]["media"]["nodes"][0]["caption"].asString() <<endl;
 }
@@ -130,7 +119,7 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
 {
     //ofLogNotice() <<"InstagramManager::urlResponse -> " << response.request.name << ", " << response.status;
     
-    if(m_tags.empty()){
+    if(m_triggerTags.empty()){
         return;
     }
 
@@ -164,14 +153,12 @@ void InstagramManager::startFeed()
     string start = "https://www.instagram.com/explore/tags/" ;
     string end = "/?__a=1" ;
     
-    for(auto tag: m_tags){
-        string url = start + tag + end;
-        ofLoadURLAsync(url, tag);
-        //ofLogNotice() <<"InstagramManager::urlTimerCompleteHandler -> tag " << tag << ", url: "<< url;
+    if(m_triggerTags.empty()){
+        return;
     }
     
-    //    string url = start + m_tags.front() + end;
-    //    ofLoadURLAsync(url, m_tags.front());
+    string url = start + m_triggerTags.front() + end;
+    ofLoadURLAsync(url, m_triggerTags.front());
     
     m_isSearchingTags = true;
 }
@@ -182,25 +169,20 @@ void InstagramManager::stopFeed()
     m_isSearchingTags = false;
 }
 
-bool InstagramManager::checkAllTags(const string& result)
+bool InstagramManager::checkEmotionTags(const string& result)
 {
-    bool allTagsAreInResult = true;
-    
-    for (auto& tag : m_tags)
-    {
-        string hastag = '#' + tag ;
-        if(!ofIsStringInString(result, hastag))
+    for(auto& tag: m_emotionTags){
+        string hastag = '#' + tag;
+        if(ofIsStringInString(result, hastag))
         {
-            ofLogNotice() <<"InstagramManager::checkAllTags -> hashtag not found: " << hastag;
-            allTagsAreInResult = false;
-            return false;
+            m_currentEmotion = tag;
+            ofLogNotice() << "InstagramManager::checkEmotionTags -> emotion hashtag found:  " << hastag;;
+            return true;
         }
-		else {
-			ofLogNotice() << "InstagramManager::checkAllTags -> hashtag found!!!: " << hastag;
-		}
+        
     }
     
-    return allTagsAreInResult;
+    return false;
 }
 
 

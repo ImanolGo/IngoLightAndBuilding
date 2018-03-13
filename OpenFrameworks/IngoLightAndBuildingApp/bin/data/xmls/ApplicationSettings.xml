@@ -14,7 +14,7 @@
   <textures>
 
     <texture name="Brush" path="images/general/brush.png"/>  
-    <texture name="Dot" path="images/general/dot.png"/>    
+    <texture name="Dot" path="images/general/BrushTrans.png"/>    
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
 
   </textures>
@@ -22,7 +22,8 @@
   <videos>
 
     <video name="TEST_VIDEO" path="videos/video_test.mp4"/>
-  
+    <video name="HEART" path="videos/heart-animation.mp4"/>
+    
   </videos>
 
   <colors>
@@ -36,11 +37,5 @@
 
   </colors>
 
-  <tags>
-
-    <tag name="happy"/>
-    <tag name="sad"/>
-  
-  </tags>
 
 </settings>

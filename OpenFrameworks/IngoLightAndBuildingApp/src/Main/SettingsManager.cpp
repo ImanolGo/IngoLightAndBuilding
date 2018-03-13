@@ -53,7 +53,6 @@ void SettingsManager::loadAllSettings()
     //this->loadSvgSettings();
     this->loadVideoSettings();
     this->loadColors();
-    this->loadTagSettings();
 }
 
 bool SettingsManager::loadSettingsFile()
@@ -299,28 +298,6 @@ void SettingsManager::loadVideoSettings()
     ofLogNotice() <<"SettingsManager::loadVideoSettings->  path not found: " << path ;
 }
 
-
-void SettingsManager::loadTagSettings()
-{
-    string path = "//tags/tag";
-    auto tagsXml = m_xml.find(path);
-    
-    if(!tagsXml.empty()) {
-        
-        for(auto & tagXml: tagsXml)
-        {
-            string name =  tagXml.getAttribute("name").getValue();
-            m_tags.push_back(name);
-            
-            ofLogNotice() <<"SettingsManager::loadTagSettings->  tag = " << name;
-        }
-        
-        ofLogNotice() <<"SettingsManager::loadTagSettings->  successfully loaded the tag settings" ;
-        return;
-    }
-    
-    ofLogNotice() <<"SettingsManager::loadTagSettings->  path not found: " << path ;
-}
 
 
 

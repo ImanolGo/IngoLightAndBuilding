@@ -88,9 +88,15 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new VectorFieldScene("COURIOUS"));
     m_mySceneManager.addScene(scene);
     
+    //Create Heart Video Scene
+    scene = ofPtr<ofxScene> (new VideoScene("HEART"));
+    m_mySceneManager.addScene(scene);
+    
     //Create Blank Scene
     scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
+    
+    
     
    
 

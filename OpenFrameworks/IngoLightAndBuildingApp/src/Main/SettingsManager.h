@@ -44,8 +44,6 @@ public:
     
     const ResourcesPathMap& getVideoResourcesPath() const {return m_videoResourcesPath;}
     
-    const ResourcesVector& getTags() const {return m_tags;}
-    
     ofColor getColor(const string& colorName);
     
     float getAppWidth() const {return m_appWidth;}
@@ -99,9 +97,6 @@ private:
     //! Loads all the video  settings
     void loadVideoSettings();
     
-    //! Loads all the tag  settings
-    void loadTagSettings();
-    
     //! Loads all the serial  settings
     void loadSerialSettings();
     
@@ -115,7 +110,6 @@ private:
     ResourcesPathMap        m_svgResourcesPath;     ///< stores the svg paths
     ResourcesPathMap        m_videoResourcesPath;   ///< stores the video paths
     ColorMap                m_colors;               ///< stores all the application's colors
-    ResourcesVector         m_tags;                 ///< stroes all the tags
     float                   m_appWidth;             ///< stores the applications width
     float                   m_appHeight;            ///< stores the applications height
     int                     m_portOscSend;          ///< stores the OSC port used for the OSC Sending communications

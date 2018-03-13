@@ -58,7 +58,9 @@ private:
     
     string parseJsonCode(const string& result);
     
-    bool checkAllTags(const string& result);
+    bool checkEmotionTags(const string& result);
+    
+    void setNewScene();
     
 private:
     
@@ -66,10 +68,15 @@ private:
     typedef            map<string,string> TagMap; ///< Defines a map of current feeds related to a tag
     typedef            vector<string> TagVector; ///< Defines a map of current feeds related to a tag
     
-    TagVector          m_tags;
+    TagVector          m_triggerTags;
+    TagVector          m_emotionTags;
     ofxSimpleTimer     m_urlTimer;
     ofxJSONElement     m_json;
-    TagMap             m_currentCodes;
+    string             m_currentString;
+    string             m_currentCode;
+    string             m_currentEmotion;
+    bool               m_newTag;
+    bool               m_firstTag;
     bool               m_isSearchingTags;
 
 
