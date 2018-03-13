@@ -29,8 +29,9 @@ struct ParticleParameters
     float       vectorSpeed;
     float       randomness;
     int         num;
+    float       blur;
     
-    ParticleParameters():direction(0), directionMag(0),speed(1.0), size(6.0), num(100), fadeTime(2.0), vectorSpeed(0.2), randomness(0.5){}
+    ParticleParameters():direction(0), directionMag(0),speed(1.0), size(6.0), num(100), fadeTime(2.0), vectorSpeed(0.2), randomness(0.5), blur(0.2){}
 };
 
 
@@ -67,6 +68,8 @@ class ParticlesManager: public Manager
         void setVectorSpeed(float & value) { m_parameters.vectorSpeed = value;}
     
         void setRandonmess(float & value) { m_parameters.randomness = value;}
+    
+        void setBlur(float & value) { m_parameters.blur = value;}
     
         const ParticleParameters& getParameters() const {return m_parameters;}
 

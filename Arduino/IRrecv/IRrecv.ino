@@ -22,7 +22,7 @@
 
 #include <IRremote.h>
 
-int RECV_PIN = 2;
+int RECV_PIN = 3;
 
 IRrecv irrecv(RECV_PIN);
 
@@ -30,8 +30,12 @@ decode_results results;
 
 void setup()
 {
+  
   Serial.begin(115200);
-  delay(200);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB
+  }
+  //delay(200);
   // In case the interrupt driver crashes on setup, give a clue
   // to the user what's going on.
   Serial.println("Enabling IRin");

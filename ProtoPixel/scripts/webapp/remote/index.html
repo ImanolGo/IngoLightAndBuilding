@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>pl.js example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!-- CSS Styles -->
+	<link rel="stylesheet" type="text/css" href="app.css">
+
+	<!-- ProtoPixel Library -->
+	<script>
+		// avoiding a library import...
+		if (!window.newImport) {
+			window.newImport = () => {
+				return Promise.resolve()
+			}
+		}
+	</script>
+	<script src="libs/pl.js"></script>
+	<script src="libs/html.js"></script>
+	<script src="libs/gl-matrix-min.js"></script>
+
+	<!-- To try your code without a ProtoPixel instance -->
+	<script src="libs/pl_testing.js"></script>
+
+	<!-- Widgets -->
+	<script src="libs/widgets/cssvars.js"></script>
+	<script src="libs/utils.js"></script>
+	<script src="libs/widgets/v2/input2D.js"></script>
+	<script src="libs/widgets/v2/string.js"></script>
+	<script src="libs/widgets/v2/slider.js"></script>
+	<script src="libs/widgets/v2/toggle.js"></script>
+	<script src="libs/widgets/v2/color.js"></script>
+
+	<!-- Example app -->
+	<script src="app.js"></script>
+
+</head>
+
+<body>
+	<div id="contents"></div>
+	<h1 style='clear:both;padding-top:1em;padding-left:0em;'>GLOBAL PARAMS.</h1>
+	<hr>
+	<div id="globalGUI" style="clear:both;margin-left: 1em;"></div>
+	<h1 style='clear:both;padding-top:1em;padding-left:0em;'>EFFECT PARAMS.</h1>
+	<hr>
+	<div id="paramsGUI" style="clear:both;margin-left: 1em;"></div>
+	<div id="params" style="display:none;"></div>
+	<br>
+</body>
+
+</html>

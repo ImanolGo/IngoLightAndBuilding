@@ -120,6 +120,7 @@ private:
     ofParameter<int>        m_particlesNum;
     ofParameter<float>      m_particlesVectSpeed;
     ofParameter<float>      m_particlesRandomness;
+    ofParameter<float>      m_particlesBlur;
     
     vector<ofParameter<int> > m_colorHexVector;
     vector<ofColor >         m_colors;

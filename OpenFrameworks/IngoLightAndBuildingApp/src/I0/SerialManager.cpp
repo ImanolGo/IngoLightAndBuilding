@@ -168,6 +168,10 @@ bool SerialManager::receivedOk()
 
 void SerialManager::update()
 {
+    if(!m_serial.isInitialized()){
+        return;
+    }
+    
     int value = this->readCommands();
     if(value>=0){
         this->processCommand(value);

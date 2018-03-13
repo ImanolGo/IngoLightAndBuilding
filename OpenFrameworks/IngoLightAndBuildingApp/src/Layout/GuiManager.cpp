@@ -189,6 +189,10 @@ void GuiManager::setupParticlesGui()
     m_particlesRandomness.addListener(particlesManager, &ParticlesManager::setRandonmess);
     m_presets.add(m_particlesRandomness);
     
+    m_particlesBlur.set("Blur", 0.05, 0.0, 0.15);
+    m_particlesBlur.addListener(particlesManager, &ParticlesManager::setBlur);
+    m_presets.add(m_particlesBlur);
+    
     
     ofxDatGuiFolder* folder = m_gui.addFolder("PARTICLES", ofColor::yellow);
     folder->addSlider(m_particlesDirection);
@@ -197,8 +201,9 @@ void GuiManager::setupParticlesGui()
     folder->addSlider(m_particlesSize);
     folder->addSlider(m_particlesNum);
     folder->addSlider(m_particlesFade);
-    folder->addSlider(m_particlesVectSpeed);
+   // folder->addSlider(m_particlesVectSpeed);
     folder->addSlider(m_particlesRandomness);
+    folder->addSlider(m_particlesBlur);
     folder->expand();
     m_gui.addBreak();
 }

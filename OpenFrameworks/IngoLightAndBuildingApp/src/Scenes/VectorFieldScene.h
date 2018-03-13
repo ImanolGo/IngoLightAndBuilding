@@ -41,6 +41,8 @@ public:
     //! Called when exit
     void willExit();
     
+    void setAdditiveBlend(bool value);
+    
 private:
     
     void setupVectorField();

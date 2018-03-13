@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Widget</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!-- ProtoPixel Library -->
+	<link rel="stylesheet" href="/libs/common.css">
+	<script src="/libs/html.js#dynamic=1"></script>
+	<script src="/libs/stub_core.js"></script>
+
+	<script>
+		"use strict"
+		newImport("widgets/v2/paint.js")
+
+		let ws = null
+		onload = () => {
+			const p = newPaint(), elem = p.elem
+			setStyle(elem, {
+				width: "100%",
+				height: "100%",
+			})
+			append(document.body, p)
+
+			// get fixtures
+			PL.websocket_api().then(_ws => {
+				ws = _ws
+				Promise.all([
+					core.getAllLightsPositions(),
+					core._getTransformation("Content", "paint")
+				]).then(([_ps, t]) => {
+					const ps = new Float32Array(_ps.reduce((a, b) => { return a.concat(b) }, []))
+					p.setPoints(t, ps)
+				})
+			})
+		}
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

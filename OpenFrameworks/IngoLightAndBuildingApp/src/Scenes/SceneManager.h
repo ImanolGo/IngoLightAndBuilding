@@ -45,6 +45,9 @@ public:
     //! Draw the sceneManager within a window rectangle
     void draw(const ofRectangle& rect);
     
+    //! Run the sceneManager
+    void run();
+    
     //! Changes the scene according to a name
     void changeScene(string sceneName);
     

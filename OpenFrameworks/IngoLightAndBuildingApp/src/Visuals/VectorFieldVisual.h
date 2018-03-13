@@ -70,7 +70,8 @@ public:
     
     void setColor(int index, ofColor& color);
     
-   
+    void setAdditiveBlend(bool value);
+    
 private:
     
     void setupVectorField();
@@ -111,6 +112,7 @@ private:
     int         m_numParticles;
     ofShader    m_thickLineShader;
     float       m_size;
+    bool        m_isAdditiveBlend;
     
    // ofxPostProcessing m_post;
     

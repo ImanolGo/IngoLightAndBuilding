@@ -50,6 +50,8 @@ public:
     
     void setColor(ofColor& color) {m_color = color;}
     
+    void setUseTexture(bool value);
+    
 private:
     
     //! Setup the Vector Field Particle
@@ -72,8 +74,10 @@ private:
     ofColor     m_color;
     ImageVisual m_brush;
     
+    bool        m_isUsingTexture;
     
-    int      m_duration;
+    
+    int     m_duration;
     float   m_height;
     float   m_randomness;
 };

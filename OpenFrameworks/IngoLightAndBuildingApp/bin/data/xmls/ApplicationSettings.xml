@@ -13,7 +13,8 @@
 
   <textures>
 
-    <texture name="Brush" path="images/general/brush2.png"/>    
+    <texture name="Brush" path="images/general/brush.png"/>  
+    <texture name="Dot" path="images/general/dot.png"/>    
     <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
 
   </textures>

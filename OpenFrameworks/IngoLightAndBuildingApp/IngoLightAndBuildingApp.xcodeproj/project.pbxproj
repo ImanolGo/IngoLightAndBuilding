@@ -12,6 +12,7 @@
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
 		0849AADA204F2CC50002EC96 /* VectorFieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */; };
 		0849AADE204F31500002EC96 /* ParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AADC204F31500002EC96 /* ParticlesManager.cpp */; };
+		084BAE6C2056FCA4009A638B /* TechnoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084BAE6A2056FCA3009A638B /* TechnoScene.cpp */; };
 		08B8FF092049AFF300C5AAEA /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B8FF082049AFF300C5AAEA /* Syphon.framework */; };
 		08B8FF0D2049B66000C5AAEA /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08B8FF0C2049B65F00C5AAEA /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C8E6109528865C738BFD818 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A78388489306C3277E37BA4F /* SyphonNameboundClient.m */; };
@@ -163,6 +164,8 @@
 		0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		0849AADC204F31500002EC96 /* ParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticlesManager.cpp; path = Visuals/ParticlesManager.cpp; sourceTree = "<group>"; };
 		0849AADD204F31500002EC96 /* ParticlesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticlesManager.h; path = Visuals/ParticlesManager.h; sourceTree = "<group>"; };
+		084BAE6A2056FCA3009A638B /* TechnoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TechnoScene.cpp; path = Scenes/TechnoScene.cpp; sourceTree = "<group>"; };
+		084BAE6B2056FCA4009A638B /* TechnoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TechnoScene.h; path = Scenes/TechnoScene.h; sourceTree = "<group>"; };
 		08B8FF082049AFF300C5AAEA /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = src/Addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		08B8FF0C2049B65F00C5AAEA /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = src/Addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		09BB1D7613A1F9D8E8B11D7A /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = KeyboardManager.h; path = src/I0/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
@@ -1221,6 +1224,8 @@
 				15AE7B79BBACBC510C450229 /* VideoScene.h */,
 				0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */,
 				0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */,
+				084BAE6A2056FCA3009A638B /* TechnoScene.cpp */,
+				084BAE6B2056FCA4009A638B /* TechnoScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1570,6 +1575,7 @@
 				C26B4AEA4BA645EEC32E54DB /* ofxOscBundle.cpp in Sources */,
 				8B013AAF61140A887C09F01C /* ofxOscMessage.cpp in Sources */,
 				250F5AA229BD4E2C9571B6BD /* ofxOscParameterSync.cpp in Sources */,
+				084BAE6C2056FCA4009A638B /* TechnoScene.cpp in Sources */,
 				B942B6871F2CB8202B50F03F /* ofxOscReceiver.cpp in Sources */,
 				F16CD48D52D4EE669A15B021 /* ofxOscSender.cpp in Sources */,
 				891075B3B577FF32531C8E61 /* IpEndpointName.cpp in Sources */,

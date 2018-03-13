@@ -13,7 +13,7 @@
 const int VectorFieldVisual::NUM_PARTICLES = 800;
 
 
-VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(8), m_size(20)
+VectorFieldVisual::VectorFieldVisual():m_speed(0.02), m_spacing(20), m_skipFrames(0), m_fadeTime(8), m_size(20), m_isAdditiveBlend(false)
 {
     //Intentionaly left empty
 }
@@ -92,13 +92,16 @@ void VectorFieldVisual::resetParticles()
 	}
     
     this->setupShader();
+    
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+    this->setupBlur();
 }
 void VectorFieldVisual::setupBlur()
 {
     float width = AppManager::getInstance().getSettingsManager().getAppWidth();
     float height  = AppManager::getInstance().getSettingsManager().getAppHeight();
     m_blur.setup(width, height);
-    m_blur.setScale(0.05);
+    //m_blur.setScale(0.05);
 }
 
 void VectorFieldVisual::update()
@@ -137,30 +140,45 @@ void VectorFieldVisual::updateFbo()
     
    
     m_fbo.begin();
-    
-    
-    if(m_skipFrames>=numSkipFrames){
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_ONE, GL_ONE);
-        glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
-        
-        ofSetColor(0, (int)fClearOpacity);
-        ofFill();
-        ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
-        
-        m_skipFrames = 0;
+    if(m_isAdditiveBlend){
+        ofClear(0);
     }
- 
     
-    glDisable(GL_BLEND);
-    glBlendEquation(GL_FUNC_ADD);
-    glBlendFunc(GL_SRC_COLOR, GL_DST_COLOR);
+    m_blur.begin();
+    
+     if(m_isAdditiveBlend){
+         ofClear(0);
+     }
+     else{
+         if(m_skipFrames>=numSkipFrames){
+             glEnable(GL_BLEND);
+             glBlendFunc(GL_ONE, GL_ONE);
+             glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
+             
+            //auto color = AppManager::getInstance().getGuiManager().getColor(0);
+             
+            // ofSetColor(color.r, color.g, color.b, (int)fClearOpacity);
+             ofSetColor(0, (int)fClearOpacity);
+             ofFill();
+             ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
+             
+             m_skipFrames = 0;
+         }
+         
+         
+         glDisable(GL_BLEND);
+         glBlendEquation(GL_FUNC_ADD);
+         glBlendFunc(GL_SRC_COLOR, GL_DST_COLOR);
+     }
+    
     
     
     ofSetColor(255);
     
         this->drawParticles();
     
+    m_blur.end();
+    m_blur.draw();
     m_fbo.end();
     //ofDisableAlphaBlending();
     //ofDisableBlendMode();
@@ -180,35 +198,47 @@ void VectorFieldVisual::drawVectorField()
 void VectorFieldVisual::drawParticles()
 {
 	//ofEnableSmoothing();
-    //ofEnableAlphaBlending();
-	//ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //m_blur.begin();
-    m_thickLineShader.begin();
-    m_thickLineShader.setUniform1f("thickness", m_size);
-    for( int i=0; i<m_numParticles; i++){
-        m_particles[i].draw();
+    
+    ofEnableAlphaBlending();
+    
+    if(m_isAdditiveBlend){
+        ofEnableBlendMode(OF_BLENDMODE_ADD);
+        for( int i=0; i<m_numParticles; i++){
+            m_particles[i].draw();
+        }
+         ofDisableBlendMode();
+         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    }
+    else{
+        m_thickLineShader.begin();
+        m_thickLineShader.setUniform1f("thickness", m_size);
+        for( int i=0; i<m_numParticles; i++){
+            m_particles[i].draw();
+        }
+        
+        m_thickLineShader.end();
     }
     
-    m_thickLineShader.end();
-     //m_blur.end();
-    // m_blur.draw();
-	//ofDisableBlendMode();
+	ofDisableBlendMode();
 }
 
 
 void VectorFieldVisual::addParameters(ParticleParameters& parameters)
 {
+     m_size = parameters.size;
+    
     for( int i=0; i<m_particles.size(); i++){
         m_particles[i].setMaxSpeed(parameters.speed);
-        m_particles[i].setSize(parameters.size);
+        m_particles[i].setSize(m_size*2);
         m_particles[i].setRandomness(parameters.randomness);
+        m_particles[i].setUseTexture(m_isAdditiveBlend);
     }
     
-    m_size = parameters.size;
-    
+   
     m_numParticles = (int) ofClamp(parameters.num, 0, m_particles.size());
     m_fadeTime = parameters.fadeTime;
-    m_speed = parameters.vectorSpeed;
+    //m_speed = parameters.vectorSpeed;
+    m_blur.setScale(parameters.blur);
 }
 
 void VectorFieldVisual::setColor(int index, ofColor& color)
@@ -253,5 +283,13 @@ void VectorFieldVisual::setNumber(int value)
 {
     m_numParticles = min(value,(int)m_particles.size());
     m_numParticles = max(m_numParticles,0);
+}
+
+void VectorFieldVisual::setAdditiveBlend(bool value)
+{
+    m_isAdditiveBlend = value;
+    for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setUseTexture(value);
+    }
 }
 

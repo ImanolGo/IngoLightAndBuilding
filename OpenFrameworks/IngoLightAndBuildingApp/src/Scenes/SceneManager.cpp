@@ -50,13 +50,13 @@ void SceneManager::createScenes()
     
     ofPtr<ofxScene> scene;
     
-    //Create Video Scene
-    scene = ofPtr<ofxScene> (new VideoScene("TEST_VIDEO"));
-    m_mySceneManager.addScene(scene);
-    
-    //Create Image Scene
-    scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
-    m_mySceneManager.addScene(scene);
+//    //Create Video Scene
+//    scene = ofPtr<ofxScene> (new VideoScene("TEST_VIDEO"));
+//    m_mySceneManager.addScene(scene);
+//
+//    //Create Image Scene
+//    scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
+//    m_mySceneManager.addScene(scene);
     
     //Create Impatient Scene
     scene = ofPtr<ofxScene> (new VectorFieldScene("IMPATIENT"));
@@ -65,19 +65,45 @@ void SceneManager::createScenes()
     //Create Sad Scene
     scene = ofPtr<ofxScene> (new VectorFieldScene("SAD"));
     m_mySceneManager.addScene(scene);
+
+    //Create Techno Scene
+    scene = ofPtr<ofxScene> (new TechnoScene("TECHNOSTRESSED"));
+    m_mySceneManager.addScene(scene);
     
+    //Create Etsatic Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene("ECSTATIC"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Melancholy
+    scene = ofPtr<ofxScene> (new VectorFieldScene("MELANCHOLY"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Loved
+    auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("LOVED"));
+    vectorScene->setAdditiveBlend(true);
+    //scene = ofPtr<ofxScene> (new VectorFieldScene("LOVED"));
+    m_mySceneManager.addScene(vectorScene);
+    
+    //Create Courious
+    scene = ofPtr<ofxScene> (new VectorFieldScene("COURIOUS"));
+    m_mySceneManager.addScene(scene);
     
     //Create Blank Scene
     scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
     
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+   
 
-    m_mySceneManager.run(width, height);
+   // m_mySceneManager.run(width, height);
     this->onTransitionTimeChange(m_transitionTime);
 }
 
+void SceneManager::run()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    m_mySceneManager.run(width, height);
+}
 
 void SceneManager::setupFbo()
 {
@@ -111,7 +137,7 @@ void SceneManager::onChangeSceneDuration(float& value)
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList = { "TEST_VIDEO", "RAINBOW"};
+    m_sceneList = { "LOVED", "IMPATIENT"};
 }
 
 

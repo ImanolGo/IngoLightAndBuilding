@@ -12,7 +12,7 @@
 
 const float VectorFieldParticle:: SCREEN_OFFSET = 2;
 
-VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(6), m_randomness(0.5)
+VectorFieldParticle::VectorFieldParticle(): m_maxSpeed(2), m_height(10), m_randomness(0.5), m_isUsingTexture(false)
 {
     this->setup();
 }
@@ -116,11 +116,17 @@ void VectorFieldParticle::update()
 void VectorFieldParticle::draw(){
     ofPushMatrix();
     ofPushStyle();
-        ofSetColor(m_color);
+    
         //ofScale(0.5, 0.5);
         //ofSetLineWidth(m_height);
+        if(m_isUsingTexture){
+            m_brush.draw();
+        }
+        else{
+            ofSetColor(m_color);
+            ofDrawLine(m_prevPos,m_pos);
+        }
         //m_brush.draw();
-        ofDrawLine(m_prevPos,m_pos);
         //ofDrawRectRounded(-width*0.5,-height*0.5,m_fbo.getWidth(),height, 0.1);
     ofPopStyle();
     ofPopMatrix();
@@ -150,5 +156,12 @@ bool VectorFieldParticle::isOffScreen(){
     }
     
     return false;
+}
+
+
+ void VectorFieldParticle::setUseTexture(bool value)
+{
+    m_isUsingTexture = value;
+    
 }
 

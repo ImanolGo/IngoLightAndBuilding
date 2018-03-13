@@ -96,6 +96,11 @@ void VectorFieldScene::setColors()
     }
 }
 
+ void VectorFieldScene::setAdditiveBlend(bool value)
+{
+    m_vectorField.setAdditiveBlend(value);
+}
+
 void VectorFieldScene::willFadeIn() {
     ofLogNotice("VectorFieldScene::willFadeIn");
     AppManager::getInstance().getGuiManager().loadPresetsValues(getName());

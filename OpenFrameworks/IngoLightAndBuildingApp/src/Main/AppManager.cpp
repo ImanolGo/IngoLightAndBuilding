@@ -74,11 +74,13 @@ void AppManager::setupManagers()
     m_serialManager.setup();
     m_keyboardManager.setup();
     //m_noiseManager.setup();
-    m_sceneManager.setup();
+    //m_sceneManager.setup();
     m_particlesManager.setup();
     m_oscManager.setup();
 
+    m_sceneManager.setup();
     m_guiManager.setup();
+    m_sceneManager.run();
 }
 
 void AppManager::update()

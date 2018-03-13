@@ -13,5 +13,6 @@
 #include "VideoScene.h"
 #include "ImageScene.h"
 #include "VectorFieldScene.h"
+#include "TechnoScene.h"
 
 
