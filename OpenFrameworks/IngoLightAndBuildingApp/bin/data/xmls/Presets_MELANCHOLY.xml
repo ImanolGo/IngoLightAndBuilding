@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <group>
 	<Direction>103.15</Direction>
-	<Dir__Mag_>1.42</Dir__Mag_>
-	<Speed>0.28</Speed>
-	<Size>12.36</Size>
-	<Num>800</Num>
-	<Fade>5.39</Fade>
+	<Dir__Mag_>0.01</Dir__Mag_>
+	<Speed>2.25</Speed>
+	<Size>8.99</Size>
+	<Num>562</Num>
+	<Fade>0</Fade>
 	<Vect__Speed>0.01</Vect__Speed>
 	<Randomness>0</Randomness>
 	<Blur>0.03</Blur>
-	<COLOR_0>11911</COLOR_0>
+	<COLOR_0>90339</COLOR_0>
 	<COLOR_1>16514045</COLOR_1>
-	<COLOR_2>11917306</COLOR_2>
+	<COLOR_2>14935011</COLOR_2>
 	<COLOR_3>16119285</COLOR_3>
-	<COLOR_4>9945338</COLOR_4>
+	<COLOR_4>14737632</COLOR_4>
 </group>

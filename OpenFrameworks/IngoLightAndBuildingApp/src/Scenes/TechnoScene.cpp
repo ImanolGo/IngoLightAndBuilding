@@ -98,7 +98,7 @@ void TechnoScene::updateImages()
     
     m_elapsedTime+=ofGetLastFrameTime();
     bool setRandomPos = false;
-    if(m_elapsedTime>parameters.speed){
+    if(m_elapsedTime>parameters.speed*0.1){
         m_elapsedTime =0;
         setRandomPos = true;
     }

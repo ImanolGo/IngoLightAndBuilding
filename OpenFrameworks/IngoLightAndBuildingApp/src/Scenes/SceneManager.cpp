@@ -84,6 +84,10 @@ void SceneManager::createScenes()
     //scene = ofPtr<ofxScene> (new VectorFieldScene("LOVED"));
     m_mySceneManager.addScene(vectorScene);
     
+    //Create Cheerful
+    scene = ofPtr<ofxScene> (new FlatScene("CHEERFUL"));
+    m_mySceneManager.addScene(scene);
+    
     //Create Courious
     scene = ofPtr<ofxScene> (new VectorFieldScene("COURIOUS"));
     m_mySceneManager.addScene(scene);
@@ -96,9 +100,6 @@ void SceneManager::createScenes()
     scene = ofPtr<ofxScene> (new BlankScene());
     m_mySceneManager.addScene(scene);
     
-    
-    
-   
 
    // m_mySceneManager.run(width, height);
     this->onTransitionTimeChange(m_transitionTime);

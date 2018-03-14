@@ -11,6 +11,7 @@
 		04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D9822CFA7F77387B3BBDBC /* ftParticleFlow.cpp */; };
 		059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE9EA26E2A646CE843DEEB1E /* ofxSmartFont.cpp */; };
 		083D8B09205879770034F23C /* OscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B08205879760034F23C /* OscManager.cpp */; };
+		083D8B0C205890DC0034F23C /* FlatScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B0A205890DB0034F23C /* FlatScene.cpp */; };
 		0849AADA204F2CC50002EC96 /* VectorFieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */; };
 		0849AADE204F31500002EC96 /* ParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AADC204F31500002EC96 /* ParticlesManager.cpp */; };
 		084BAE6C2056FCA4009A638B /* TechnoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084BAE6A2056FCA3009A638B /* TechnoScene.cpp */; };
@@ -162,6 +163,8 @@
 		07700E6618D290A6D4D41EDE /* OscPacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OscPacketListener.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h; sourceTree = SOURCE_ROOT; };
 		083D8B07205879760034F23C /* OscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OscManager.h; path = I0/OscManager.h; sourceTree = "<group>"; };
 		083D8B08205879760034F23C /* OscManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OscManager.cpp; path = I0/OscManager.cpp; sourceTree = "<group>"; };
+		083D8B0A205890DB0034F23C /* FlatScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlatScene.cpp; path = Scenes/FlatScene.cpp; sourceTree = "<group>"; };
+		083D8B0B205890DC0034F23C /* FlatScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlatScene.h; path = Scenes/FlatScene.h; sourceTree = "<group>"; };
 		0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VectorFieldScene.cpp; path = Scenes/VectorFieldScene.cpp; sourceTree = "<group>"; };
 		0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		0849AADC204F31500002EC96 /* ParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticlesManager.cpp; path = Visuals/ParticlesManager.cpp; sourceTree = "<group>"; };
@@ -1226,6 +1229,8 @@
 				0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */,
 				084BAE6A2056FCA3009A638B /* TechnoScene.cpp */,
 				084BAE6B2056FCA4009A638B /* TechnoScene.h */,
+				083D8B0A205890DB0034F23C /* FlatScene.cpp */,
+				083D8B0B205890DC0034F23C /* FlatScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1493,6 +1498,7 @@
 				6960C2659A81B7936347DA8D /* ftFluidSimulation.cpp in Sources */,
 				3E08E879CDB133B2B1D5F23B /* ftVelocityMask.cpp in Sources */,
 				5A7307C2BBC29E51B588C902 /* ftOpticalFlow.cpp in Sources */,
+				083D8B0C205890DC0034F23C /* FlatScene.cpp in Sources */,
 				04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */,
 				E937780B3C3172684F9A853F /* ftSvAverage.cpp in Sources */,
 				A89C1D586E1CD69DA460A7F7 /* ftAverageVelocity.cpp in Sources */,

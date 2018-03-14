@@ -14,5 +14,6 @@
 #include "ImageScene.h"
 #include "VectorFieldScene.h"
 #include "TechnoScene.h"
+#include "FlatScene.h"
 
 

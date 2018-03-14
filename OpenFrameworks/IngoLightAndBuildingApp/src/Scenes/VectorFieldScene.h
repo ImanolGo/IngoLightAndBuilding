@@ -57,6 +57,8 @@ private:
     
     void setColors();
     
+    ofColor getRandomColor();
+    
 private:
     
     VectorFieldVisual       m_vectorField;

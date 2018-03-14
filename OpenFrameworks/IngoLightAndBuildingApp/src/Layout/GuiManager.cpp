@@ -107,12 +107,18 @@ void GuiManager::setupLayoutGui()
     auto layoutManager = &AppManager::getInstance().getLayoutManager();
     auto sceneManager = &AppManager::getInstance().getSceneManager();
     
-    m_sceneTransitionTime.set("TransitionTime", 2.0, 0.0, 10.0);
+    m_sceneTransitionTime.set("TransitionTime", 0.5, 0.0, 3.0);
     m_sceneTransitionTime.addListener(sceneManager, &SceneManager::onTransitionTimeChange);
     m_parameters.add(m_sceneTransitionTime);
     
+    m_sceneTimer.set("ScenesTimer", 30, 10, 120.0);
+    m_sceneTimer.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
+    m_presets.add(m_sceneTransitionTime);
+    
+    
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
     folder->addSlider(m_sceneTransitionTime);
+    folder->addSlider(m_sceneTimer);
     folder->expand();
     m_gui.addBreak();
 }

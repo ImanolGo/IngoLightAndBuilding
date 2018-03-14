@@ -111,6 +111,7 @@ private:
     ofParameterGroup        m_presets;
     
     ofParameter<float>      m_sceneTransitionTime;
+    ofParameter<float>      m_sceneTimer;
     
     ofParameter<float>      m_particlesDirection;
     ofParameter<float>      m_particlesDirectionMag;

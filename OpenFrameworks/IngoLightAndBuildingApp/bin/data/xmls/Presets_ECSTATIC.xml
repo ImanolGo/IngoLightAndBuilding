@@ -3,12 +3,12 @@
 	<Direction>0</Direction>
 	<Dir__Mag_>0</Dir__Mag_>
 	<Speed>0.96</Speed>
-	<Size>2.5</Size>
+	<Size>2.25</Size>
 	<Num>800</Num>
 	<Fade>58.99</Fade>
 	<Vect__Speed>0.2</Vect__Speed>
 	<Randomness>0</Randomness>
-	<Blur>0.02</Blur>
+	<Blur>0.01</Blur>
 	<COLOR_0>0</COLOR_0>
 	<COLOR_1>14680181</COLOR_1>
 	<COLOR_2>14803425</COLOR_2>

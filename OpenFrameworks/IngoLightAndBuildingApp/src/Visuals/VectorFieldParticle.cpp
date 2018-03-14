@@ -52,7 +52,7 @@ void VectorFieldParticle::reset()
 
 void VectorFieldParticle::setupBrush()
 {
-    m_brush.setResource("Brush");
+    m_brush.setResource("Dot");
     m_brush.setCentred(true);
     m_brush.setWidth(m_height,true);
 }
@@ -119,14 +119,14 @@ void VectorFieldParticle::draw(){
     
         //ofScale(0.5, 0.5);
         //ofSetLineWidth(m_height);
-        if(m_isUsingTexture){
-            m_brush.draw();
-        }
-        else{
-            ofSetColor(m_color);
-            ofDrawLine(m_prevPos,m_pos);
-        }
-        //m_brush.draw();
+//        if(m_isUsingTexture){
+//            m_brush.draw();
+//        }
+//        else{
+//            ofSetColor(m_color);
+//            ofDrawLine(m_prevPos,m_pos);
+//        }
+        m_brush.draw();
         //ofDrawRectRounded(-width*0.5,-height*0.5,m_fbo.getWidth(),height, 0.1);
     ofPopStyle();
     ofPopMatrix();
@@ -159,9 +159,12 @@ bool VectorFieldParticle::isOffScreen(){
 }
 
 
- void VectorFieldParticle::setUseTexture(bool value)
+void VectorFieldParticle::setUseTexture(bool value)
 {
     m_isUsingTexture = value;
+    if(m_isUsingTexture){
+        m_brush.setResource("Brush");
+    }
     
 }
 

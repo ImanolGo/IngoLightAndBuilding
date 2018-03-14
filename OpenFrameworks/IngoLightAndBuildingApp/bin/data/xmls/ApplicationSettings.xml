@@ -14,8 +14,8 @@
   <textures>
 
     <texture name="Brush" path="images/general/brush.png"/>  
-    <texture name="Dot" path="images/general/BrushTrans.png"/>    
-    <texture name="RAINBOW" path="images/general/gradientRainbow.jpg"/>
+    <texture name="Dot" path="images/general/circle-xxl.png"/>    
+    <texture name="Square" path="images/general/square.png"/>
 
   </textures>
 
@@ -36,6 +36,5 @@
     <color  name="GUI1" r="160" g="160" b="80" a="200"/>
 
   </colors>
-
 
 </settings>

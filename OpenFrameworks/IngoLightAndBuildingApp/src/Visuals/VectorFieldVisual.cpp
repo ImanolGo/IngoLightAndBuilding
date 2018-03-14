@@ -210,13 +210,13 @@ void VectorFieldVisual::drawParticles()
          ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     }
     else{
-        m_thickLineShader.begin();
-        m_thickLineShader.setUniform1f("thickness", m_size);
+        //m_thickLineShader.begin();
+        //m_thickLineShader.setUniform1f("thickness", m_size);
         for( int i=0; i<m_numParticles; i++){
             m_particles[i].draw();
         }
         
-        m_thickLineShader.end();
+       // m_thickLineShader.end();
     }
     
 	ofDisableBlendMode();
@@ -228,10 +228,11 @@ void VectorFieldVisual::addParameters(ParticleParameters& parameters)
      m_size = parameters.size;
     
     for( int i=0; i<m_particles.size(); i++){
+        m_particles[i].setUseTexture(m_isAdditiveBlend);
         m_particles[i].setMaxSpeed(parameters.speed);
         m_particles[i].setSize(m_size*2);
         m_particles[i].setRandomness(parameters.randomness);
-        m_particles[i].setUseTexture(m_isAdditiveBlend);
+        
     }
     
    
