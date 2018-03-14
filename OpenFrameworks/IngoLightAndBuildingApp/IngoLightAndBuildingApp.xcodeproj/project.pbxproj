@@ -13,6 +13,7 @@
 		083D8B09205879770034F23C /* OscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B08205879760034F23C /* OscManager.cpp */; };
 		083D8B0C205890DC0034F23C /* FlatScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B0A205890DB0034F23C /* FlatScene.cpp */; };
 		083D8B102058A3F90034F23C /* CloudScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B0E2058A3F90034F23C /* CloudScene.cpp */; };
+		083D8B132058A9180034F23C /* NoiseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 083D8B112058A9170034F23C /* NoiseScene.cpp */; };
 		0849AADA204F2CC50002EC96 /* VectorFieldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */; };
 		0849AADE204F31500002EC96 /* ParticlesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0849AADC204F31500002EC96 /* ParticlesManager.cpp */; };
 		084BAE6C2056FCA4009A638B /* TechnoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 084BAE6A2056FCA3009A638B /* TechnoScene.cpp */; };
@@ -168,6 +169,8 @@
 		083D8B0B205890DC0034F23C /* FlatScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlatScene.h; path = Scenes/FlatScene.h; sourceTree = "<group>"; };
 		083D8B0E2058A3F90034F23C /* CloudScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudScene.cpp; path = Scenes/CloudScene.cpp; sourceTree = "<group>"; };
 		083D8B0F2058A3F90034F23C /* CloudScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudScene.h; path = Scenes/CloudScene.h; sourceTree = "<group>"; };
+		083D8B112058A9170034F23C /* NoiseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoiseScene.cpp; path = Scenes/NoiseScene.cpp; sourceTree = "<group>"; };
+		083D8B122058A9180034F23C /* NoiseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoiseScene.h; path = Scenes/NoiseScene.h; sourceTree = "<group>"; };
 		0849AAD8204F2CC50002EC96 /* VectorFieldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VectorFieldScene.cpp; path = Scenes/VectorFieldScene.cpp; sourceTree = "<group>"; };
 		0849AAD9204F2CC50002EC96 /* VectorFieldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorFieldScene.h; path = Scenes/VectorFieldScene.h; sourceTree = "<group>"; };
 		0849AADC204F31500002EC96 /* ParticlesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticlesManager.cpp; path = Visuals/ParticlesManager.cpp; sourceTree = "<group>"; };
@@ -1236,6 +1239,8 @@
 				083D8B0B205890DC0034F23C /* FlatScene.h */,
 				083D8B0E2058A3F90034F23C /* CloudScene.cpp */,
 				083D8B0F2058A3F90034F23C /* CloudScene.h */,
+				083D8B112058A9170034F23C /* NoiseScene.cpp */,
+				083D8B122058A9180034F23C /* NoiseScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				6286707BC126BC69BE17FB3A /* NoiseWarpPass.cpp in Sources */,
 				F112CEC8EC064BD6AD9E6FE2 /* PixelatePass.cpp in Sources */,
 				0849AADA204F2CC50002EC96 /* VectorFieldScene.cpp in Sources */,
+				083D8B132058A9180034F23C /* NoiseScene.cpp in Sources */,
 				32BAF795C43C262CEE96C5C6 /* PostProcessing.cpp in Sources */,
 				5D1636B56624E8846A871192 /* RenderPass.cpp in Sources */,
 				8D6C918BE49C3E9E6DC748EC /* RGBShiftPass.cpp in Sources */,
