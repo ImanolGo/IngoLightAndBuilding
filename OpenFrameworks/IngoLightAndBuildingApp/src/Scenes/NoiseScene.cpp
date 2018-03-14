@@ -84,7 +84,7 @@ void NoiseScene::willDraw() {
 }
 
 void NoiseScene::willFadeOut() {
-    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+   // AppManager::getInstance().getGuiManager().savePresetsValues(getName());
     ofLogNotice("NoiseScene::willFadeOut");
 }
 

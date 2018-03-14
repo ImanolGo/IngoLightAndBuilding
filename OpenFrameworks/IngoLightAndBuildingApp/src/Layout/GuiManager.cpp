@@ -73,7 +73,7 @@ void GuiManager::setupGuiParameters()
     m_gui.addToggle("Fullscreen");
     auto toggle = m_gui.getToggle("Fullscreen");
     toggle->setChecked(true);
-    m_gui.addButton("* Save GUI");
+    m_gui.addButton("Save Preset");
     
     m_gui.addBreak();
     
@@ -348,9 +348,11 @@ void GuiManager::onButtonEvent(ofxDatGuiButtonEvent e)
 {
     cout << "onButtonEvent: " << e.target->getName() << " Selected" << endl;
     
-    if(e.target->getName() == "* Save GUI")
+    if(e.target->getName() == "Save Preset")
     {
-        this->saveGuiValues();
+        //this->saveGuiValues();
+        auto currentSceneName = AppManager::getInstance().getSceneManager().getCurrentSceneName();
+        this->savePresetsValues(currentSceneName);
     }
 }
 

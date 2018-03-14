@@ -151,7 +151,7 @@ void FlatScene::willDraw() {
 
 void FlatScene::willFadeOut() {
     ofLogNotice("FlatScene::willFadeOut");
-    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+    //AppManager::getInstance().getGuiManager().savePresetsValues(getName());
 }
 
 void FlatScene::willExit() {

@@ -111,7 +111,7 @@ void VideoScene::willDraw() {
 
 void VideoScene::willFadeOut() {
     ofLogNotice("VideoScene::willFadeOut");
-    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+    //AppManager::getInstance().getGuiManager().savePresetsValues(getName());
 }
 
 void VideoScene::willExit() {

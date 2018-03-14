@@ -164,7 +164,7 @@ void TechnoScene::willDraw() {
 
 void TechnoScene::willFadeOut() {
     ofLogNotice("TechnoScene::willFadeOut");
-    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+    //AppManager::getInstance().getGuiManager().savePresetsValues(getName());
 }
 
 void TechnoScene::willExit() {

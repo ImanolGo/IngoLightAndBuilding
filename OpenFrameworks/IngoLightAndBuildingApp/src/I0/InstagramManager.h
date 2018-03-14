@@ -62,6 +62,8 @@ private:
     
     void setNewScene();
     
+    void logToFile();
+    
 private:
     
     

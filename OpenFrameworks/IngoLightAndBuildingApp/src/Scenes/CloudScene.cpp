@@ -86,7 +86,7 @@ void CloudScene::willDraw() {
 }
 
 void CloudScene::willFadeOut() {
-    AppManager::getInstance().getGuiManager().savePresetsValues(getName());
+   // AppManager::getInstance().getGuiManager().savePresetsValues(getName());
     ofLogNotice("CloudScene::willFadeOut");
 }
 
