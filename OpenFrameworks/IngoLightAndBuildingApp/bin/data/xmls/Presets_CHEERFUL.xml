@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<group>
+	<TransitionTime>0.84</TransitionTime>
+	<Direction>84.94</Direction>
+	<Dir__Mag_>0.34</Dir__Mag_>
+	<Speed>5</Speed>
+	<Size>1.5</Size>
+	<Num>800</Num>
+	<Fade>2.7</Fade>
+	<Vect__Speed>0.01</Vect__Speed>
+	<Randomness>0.73</Randomness>
+	<Blur>0</Blur>
+	<COLOR_0>6291626</COLOR_0>
+	<COLOR_1>14942293</COLOR_1>
+	<COLOR_2>16552968</COLOR_2>
+	<COLOR_3>523732</COLOR_3>
+	<COLOR_4>524501</COLOR_4>
+</group>

@@ -58,26 +58,32 @@ void SceneManager::createScenes()
 //    scene = ofPtr<ofxScene> (new ImageScene("RAINBOW"));
 //    m_mySceneManager.addScene(scene);
     
-    //Create Impatient Scene
-    scene = ofPtr<ofxScene> (new VectorFieldScene("IMPATIENT"));
-    m_mySceneManager.addScene(scene);
-    
-    //Create Sad Scene
-    scene = ofPtr<ofxScene> (new VectorFieldScene("SAD"));
-    m_mySceneManager.addScene(scene);
-
-    //Create Techno Scene
-    scene = ofPtr<ofxScene> (new TechnoScene("TECHNOSTRESSED"));
-    m_mySceneManager.addScene(scene);
-    
     //Create Etsatic Scene
     scene = ofPtr<ofxScene> (new VectorFieldScene("ECSTATIC"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Techno Scene
+    scene = ofPtr<ofxScene> (new TechnoScene("TECHNOSTRESSED"));
     m_mySceneManager.addScene(scene);
     
     //Create Melancholy
     scene = ofPtr<ofxScene> (new VectorFieldScene("MELANCHOLY"));
     m_mySceneManager.addScene(scene);
     
+    
+    //Create Sad Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene("SAD"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Impatient Scene
+    scene = ofPtr<ofxScene> (new CloudScene("LONELY"));
+    m_mySceneManager.addScene(scene);
+    
+    //Create Impatient Scene
+    scene = ofPtr<ofxScene> (new VectorFieldScene("IMPATIENT"));
+    m_mySceneManager.addScene(scene);
+ 
+   
     //Create Loved
     auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("LOVED"));
     vectorScene->setAdditiveBlend(true);
