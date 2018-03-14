@@ -14,6 +14,7 @@ const mat2 m = mat2( 1.6,  1.2, -1.2,  1.6 );
 
 uniform float cloudcover;
 uniform float speed;
+uniform vec3 iColor = vec3(1.0,1.0,1.0);
 
 // ---> Shadertoy uniforms
 uniform vec3 iResolution;
@@ -128,5 +129,6 @@ void main(void)
     
     vec3 result = mix(skycolour, clamp(skytint * skycolour + cloudcolour, 0.0, 1.0), clamp(cloudcover*(f + c), 0.0, 1.0));
 
+    result = vec3(result.r*iColor.r, result.g*iColor.g, result.b*iColor.b);
 	gl_FragColor =  vec4(result,1.0);
 }

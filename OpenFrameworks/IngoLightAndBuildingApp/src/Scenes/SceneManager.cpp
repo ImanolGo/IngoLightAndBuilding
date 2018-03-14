@@ -67,8 +67,9 @@ void SceneManager::createScenes()
     m_mySceneManager.addScene(scene);
     
     //Create Melancholy
-    scene = ofPtr<ofxScene> (new VectorFieldScene("MELANCHOLY"));
-    m_mySceneManager.addScene(scene);
+    auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("MELANCHOLY"));
+    vectorScene->setAdditiveBlend(true);
+    m_mySceneManager.addScene(vectorScene);
     
     //Create Calm
     scene = ofPtr<ofxScene> (new NoiseScene("CALM"));
@@ -87,7 +88,7 @@ void SceneManager::createScenes()
     m_mySceneManager.addScene(scene);
  
     //Create Loved
-    auto vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("LOVED"));
+    vectorScene = ofPtr<VectorFieldScene> (new VectorFieldScene("LOVED"));
     vectorScene->setAdditiveBlend(true);
     //scene = ofPtr<ofxScene> (new VectorFieldScene("LOVED"));
     m_mySceneManager.addScene(vectorScene);

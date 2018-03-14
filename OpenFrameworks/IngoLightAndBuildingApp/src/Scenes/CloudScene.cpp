@@ -63,8 +63,10 @@ void CloudScene::drawClouds()
     float cloudcover =  ofMap(parameters.num,0.0,800,0.0,1.0,true);
     float speed  = ofMap(parameters.speed,0.0,5.0,0.005,0.15,true);
     
-    
+    auto color = AppManager::getInstance().getGuiManager().getColor(0);
+
     m_cloudsShader.begin();
+    m_cloudsShader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
     m_cloudsShader.setUniform3f("iResolution", width, height, 0.0);
     m_cloudsShader.setUniform1f("iTime", ofGetElapsedTimef());
     m_cloudsShader.setUniform1f("cloudcover", cloudcover);

@@ -86,14 +86,14 @@ void VectorFieldVisual::setupParticles()
 
 void VectorFieldVisual::resetParticles()
 {
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+    
 	for (int i = 0; i<m_particles.size(); i++)
 	{
 		m_particles[i].reset();
 	}
     
     this->setupShader();
-    
-    m_fbo.begin(); ofClear(0); m_fbo.end();
     this->setupBlur();
 }
 void VectorFieldVisual::setupBlur()
@@ -147,7 +147,10 @@ void VectorFieldVisual::updateFbo()
     m_blur.begin();
     
      if(m_isAdditiveBlend){
-         ofClear(0);
+        // ofClear(0);
+         auto color = AppManager::getInstance().getGuiManager().getColor(0);
+         ofSetColor(color);
+         ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
      }
      else{
          if(m_skipFrames>=numSkipFrames){
@@ -166,12 +169,15 @@ void VectorFieldVisual::updateFbo()
          }
          
          
+         
+         
          glDisable(GL_BLEND);
          glBlendEquation(GL_FUNC_ADD);
          glBlendFunc(GL_SRC_COLOR, GL_DST_COLOR);
      }
     
     
+
     
     ofSetColor(255);
     

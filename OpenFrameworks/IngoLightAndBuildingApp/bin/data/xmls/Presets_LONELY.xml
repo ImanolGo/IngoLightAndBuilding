@@ -3,16 +3,16 @@
 	<TransitionTime>0.84</TransitionTime>
 	<Direction>0</Direction>
 	<Dir__Mag_>0</Dir__Mag_>
-	<Speed>0.9</Speed>
+	<Speed>0.96</Speed>
 	<Size>2.25</Size>
-	<Num>99</Num>
+	<Num>373</Num>
 	<Fade>58.99</Fade>
 	<Vect__Speed>0.2</Vect__Speed>
 	<Randomness>0</Randomness>
 	<Blur>0.01</Blur>
-	<COLOR_0>16447481</COLOR_0>
+	<COLOR_0>7274723</COLOR_0>
 	<COLOR_1>0</COLOR_1>
 	<COLOR_2>0</COLOR_2>
-	<COLOR_3>0</COLOR_3>
-	<COLOR_4>0</COLOR_4>
+	<COLOR_3>526086</COLOR_3>
+	<COLOR_4>197379</COLOR_4>
 </group>
