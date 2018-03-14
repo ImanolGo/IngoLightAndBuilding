@@ -153,7 +153,7 @@ void SceneManager::onChangeSceneDuration(float& value)
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList = { "LOVED", "IMPATIENT"};
+    m_sceneList = { "LOVED", "IMPATIENT", "CALM"};
 }
 
 

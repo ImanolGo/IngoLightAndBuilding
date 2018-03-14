@@ -41,8 +41,8 @@ void InstagramManager::setup()
 
 void InstagramManager::setupTags()
 {
-   //m_triggerTags.push_back("ingomaurer");
-    m_triggerTags.push_back("emotions");
+    m_triggerTags.push_back("ingomaurer");
+    //m_triggerTags.push_back("emotions");
     m_emotionTags = {"ecstatic", "techno­stressed", "melancholy", "calm", "sad", "lonely", "impatient", "loved", "cheerful", "curious"};
     
     m_isSearchingTags = true;
@@ -128,7 +128,7 @@ void InstagramManager::urlResponse(ofHttpResponse & response)
         bool isNewTag = this->checkUpdate(response.data, response.request.name);
         if(isNewTag&&m_isSearchingTags){
             
-            AppManager::getInstance().getGuiManager().onSceneChange(ofToUpper(response.request.name));
+            AppManager::getInstance().getGuiManager().onSceneChange(ofToUpper(m_currentEmotion));
             //ofLogNotice() <<"InstagramManager::urlResponse -> New Tag: " << response.request.name;
             ofLogNotice() << ofGetTimestampString() <<": InstagramManager::tag found!!!!!-> " << response.request.name;
             this->logToFile();
@@ -146,7 +146,7 @@ void InstagramManager::logToFile()
     string logFileName = "logs/consoleLog_" + ofGetTimestampString("%Y-%m-%d") + ".txt";
     ofLogToFile(logFileName, true);
     ofLogNotice() << ofGetTimestampString() <<": Tag found. Emotion -> " << m_currentEmotion;
-    ofLogNotice() << ofGetTimestampString() <<": Text -> " << m_currentString;  
+    ofLogNotice() << ofGetTimestampString() <<": Text -> " << m_currentString;
     ofLogToConsole();
 }
 
@@ -185,7 +185,7 @@ void InstagramManager::stopFeed()
 bool InstagramManager::checkEmotionTags(const string& result)
 {
     for(auto& tag: m_emotionTags){
-        string hastag = '#' + tag;
+        string hastag = '#' + tag + " ";
         if(ofIsStringInString(result, hastag))
         {
             m_currentEmotion = tag;

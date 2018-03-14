@@ -390,9 +390,12 @@ void GuiManager::onMatrixEvent(ofxDatGuiMatrixEvent e)
 
 void GuiManager::onSceneChange(const string &sceneName)
 {
+    ofLogNotice() <<"GuiManager::onSceneChange << looking for scene: " << sceneName;
+    
     int index = AppManager::getInstance().getSceneManager().getIndex(sceneName);
     if(index>=0){
         this->onSceneChange(index);
+         ofLogNotice() <<"GuiManager::onSceneChange << Changing to scene: " << sceneName;
     }
 }
 
@@ -403,6 +406,7 @@ void GuiManager::onSceneChange(int sceneIndex)
     
     if(sceneIndex>=0 && sceneIndex< menu->size())
     {
+        ofLogNotice() <<"GuiManager::onSceneChange <<Changing to sccene index " << sceneIndex;
         menu->select(sceneIndex);
         string label =  menu->getChildAt(sceneIndex)->getLabel();
         menu->setLabel(dropBoxName + ":" + label);
