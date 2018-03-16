@@ -24,6 +24,7 @@ CloudScene::~CloudScene()
 
 void CloudScene::setup() {
     ofLogNotice(getName() + "::setup");
+    this->setupFbo();
     this->setupCloudShader();
 }
 
@@ -38,6 +39,14 @@ void CloudScene::setupCloudShader()
 }
 
 
+void CloudScene::setupFbo()
+{
+    float width = AppManager::getInstance().getSettingsManager().getAppWidth()*0.3;
+    float height = AppManager::getInstance().getSettingsManager().getAppHeight()*0.3;
+    
+    m_fbo.allocate(width, height);
+    m_fbo.begin(); ofClear(0); m_fbo.end();
+}
 
 void CloudScene::update()
 {
@@ -56,8 +65,8 @@ void CloudScene::draw()
 
 void CloudScene::drawClouds()
 {
-    float width = AppManager::getInstance().getSettingsManager().getAppWidth();
-    float height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    float width = m_fbo.getWidth();
+    float height =  m_fbo.getHeight();
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
     float cloudcover =  ofMap(parameters.num,0.0,800,0.0,1.0,true);
@@ -65,6 +74,8 @@ void CloudScene::drawClouds()
     
     auto color = AppManager::getInstance().getGuiManager().getColor(0);
 
+    m_fbo.begin();
+    ofClear(0);
     m_cloudsShader.begin();
     m_cloudsShader.setUniform3f("iColor",color.r/255.0,color.g/255.0,color.b/255.0);
     m_cloudsShader.setUniform3f("iResolution", width, height, 0.0);
@@ -73,6 +84,13 @@ void CloudScene::drawClouds()
     m_cloudsShader.setUniform1f("speed", speed);
         ofDrawRectangle(0, 0, width, height);
     m_cloudsShader.end();
+    m_fbo.end();
+    
+    
+    width = AppManager::getInstance().getSettingsManager().getAppWidth();
+    height = AppManager::getInstance().getSettingsManager().getAppHeight();
+    
+    m_fbo.draw(0,0, width, height);
 }
 
 

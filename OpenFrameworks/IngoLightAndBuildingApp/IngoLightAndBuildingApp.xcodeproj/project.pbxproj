@@ -64,7 +64,6 @@
 		891075B3B577FF32531C8E61 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8D0BF0A65EC8CAF8C213383 /* IpEndpointName.cpp */; };
 		8B013AAF61140A887C09F01C /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95774A1C5704F7E70674F601 /* ofxOscMessage.cpp */; };
 		8B8821FB4158456E8185A22B /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A14124BF720E4CA8987CC24 /* SceneManager.cpp */; };
-		8C65F531F0E4B633773A4F23 /* ofxColorGradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F095294756989C8EFA20DE3F /* ofxColorGradient.cpp */; };
 		8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89DFBB918E3BCAFB0C93CAF3 /* CameraManager.cpp */; };
 		8CF0269A51B53AF174235BF6 /* ofxSimpleTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B12110942BA191806A2DDE7B /* ofxSimpleTimer.cpp */; };
 		8D6C918BE49C3E9E6DC748EC /* RGBShiftPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5C37E57854B9B32B29B03F0 /* RGBShiftPass.cpp */; };
@@ -198,7 +197,6 @@
 		17CAE0163B7670B76C09C04A /* DofAltPass.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = DofAltPass.cpp; path = src/Addons/ofxPostProcessing/src/DofAltPass.cpp; sourceTree = SOURCE_ROOT; };
 		1A14124BF720E4CA8987CC24 /* SceneManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SceneManager.cpp; path = src/Scenes/SceneManager.cpp; sourceTree = SOURCE_ROOT; };
 		1C477F3CCFE97CC9573AE72D /* ofxTCPSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxTCPSettings.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxNetwork/src/ofxTCPSettings.h; sourceTree = SOURCE_ROOT; };
-		1C910FE87F9054F988BB3699 /* ofxColorGradient.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxColorGradient.h; path = src/Addons/ofxColorGradient/src/ofxColorGradient.h; sourceTree = SOURCE_ROOT; };
 		1CC59C0A3789CFDF9768EE4C /* EdgePass.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = EdgePass.h; path = src/Addons/ofxPostProcessing/src/EdgePass.h; sourceTree = SOURCE_ROOT; };
 		1CF05B308B6DFDCF026864B2 /* ftDrawForce.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ftDrawForce.cpp; path = src/Addons/ofxFlowTools/src/drawforces/ftDrawForce.cpp; sourceTree = SOURCE_ROOT; };
 		1D3FAE8E74B1FE8060E64EE2 /* FxaaPass.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = FxaaPass.h; path = src/Addons/ofxPostProcessing/src/FxaaPass.h; sourceTree = SOURCE_ROOT; };
@@ -443,7 +441,6 @@
 		EFFBFFED8032234C9F89EE94 /* VerticalTiltShifPass.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VerticalTiltShifPass.cpp; path = src/Addons/ofxPostProcessing/src/VerticalTiltShifPass.cpp; sourceTree = SOURCE_ROOT; };
 		F01F646CD84F962650B9F49A /* ofxDatGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxDatGui.cpp; path = src/Addons/ofxDatGui/src/ofxDatGui.cpp; sourceTree = SOURCE_ROOT; };
 		F031E6FC1C12FD680F9FB9FB /* BloomPass.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = BloomPass.h; path = src/Addons/ofxPostProcessing/src/BloomPass.h; sourceTree = SOURCE_ROOT; };
-		F095294756989C8EFA20DE3F /* ofxColorGradient.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxColorGradient.cpp; path = src/Addons/ofxColorGradient/src/ofxColorGradient.cpp; sourceTree = SOURCE_ROOT; };
 		F160B9E5C03EB5B4CAA40A37 /* ofxOscBundle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxOscBundle.h; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/src/ofxOscBundle.h; sourceTree = SOURCE_ROOT; };
 		F1FF1C3AF9C3A3E425FFC2DE /* ofxDatGuiComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxDatGuiComponent.h; path = src/Addons/ofxDatGui/src/core/ofxDatGuiComponent.h; sourceTree = SOURCE_ROOT; };
 		F340D1037ACE307AD92388BE /* OscTypes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscTypes.cpp; path = ../../../../../../../../Applications/of_v20180215_osx_release/addons/ofxOsc/libs/oscpack/src/osc/OscTypes.cpp; sourceTree = SOURCE_ROOT; };
@@ -683,15 +680,6 @@
 			name = ofxVectorField;
 			sourceTree = "<group>";
 		};
-		2DF996A8F5D6F5DA0EF4BD98 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F095294756989C8EFA20DE3F /* ofxColorGradient.cpp */,
-				1C910FE87F9054F988BB3699 /* ofxColorGradient.h */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		2F1DB78B2A138FD19F90DB77 /* splitvelocity */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,14 +766,6 @@
 				0B7F61375254528C6DAFE2CF /* ofxSceneManager.h */,
 			);
 			name = src;
-			sourceTree = "<group>";
-		};
-		4C607AEC13EE6913C48C302C /* ofxColorGradient */ = {
-			isa = PBXGroup;
-			children = (
-				2DF996A8F5D6F5DA0EF4BD98 /* src */,
-			);
-			name = ofxColorGradient;
 			sourceTree = "<group>";
 		};
 		4F3984D5C24F278F988702F9 /* src */ = {
@@ -1127,7 +1107,6 @@
 			isa = PBXGroup;
 			children = (
 				F79FFC9032CC6E409159B3E3 /* ofxBlur */,
-				4C607AEC13EE6913C48C302C /* ofxColorGradient */,
 				74A312B2568D421CAAEF740A /* ofxDatGui */,
 				08E16ED5FD8D48C6776B1270 /* ofxEasing */,
 				810FC8833FA2B9CF6358B009 /* ofxFlowTools */,
@@ -1496,7 +1475,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				333113E71EDD596780D5FC0C /* ofxBlur.cpp in Sources */,
-				8C65F531F0E4B633773A4F23 /* ofxColorGradient.cpp in Sources */,
 				DF2764E1860DD2D324923A1D /* ofxDatGuiComponent.cpp in Sources */,
 				059F15A57C00F89CF43FDDD6 /* ofxSmartFont.cpp in Sources */,
 				49EE14834E328B244122B5DE /* ofxDatGui.cpp in Sources */,

@@ -44,6 +44,8 @@ public:
     
 private:
     
+    void setupFbo();
+    
     void setupCloudShader();
     
     void drawClouds();
@@ -51,6 +53,7 @@ private:
 private:
     
     ofColor         m_color;
+    ofFbo           m_fbo;
     ofShader        m_cloudsShader;
 
 };

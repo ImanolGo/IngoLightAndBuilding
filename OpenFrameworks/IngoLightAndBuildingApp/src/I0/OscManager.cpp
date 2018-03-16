@@ -13,7 +13,7 @@
 
 
 
-const string OscManager::OSC_PARENT_ADDRESS = "/CoralSoul/Generative";
+const string OscManager::OSC_PARENT_ADDRESS = "/IngoLB";
 
 OscManager::OscManager(): Manager()
 {
@@ -68,19 +68,19 @@ void OscManager::update()
         ofxOscMessage m;
         m_oscReceiver.getNextMessage(&m);
         
-        if(m.getAddress() == OSC_PARENT_ADDRESS + "/Scene")
+        if(m.getAddress() == OSC_PARENT_ADDRESS + "/SceneName")
         {
             string sceneName = m.getArgAsString(0);
             AppManager::getInstance().getGuiManager().onSceneChange(sceneName);
         }
         
-        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/ToggleActiveScenes")
+        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/SceneIndex")
         {
             int value = m.getArgAsInt(0);
-            AppManager::getInstance().getSceneManager().toggleActiveScenes();
+            AppManager::getInstance().getGuiManager().onSceneChange(value);
         }
         
-        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/ActiveScenes")
+        else if(m.getAddress() == OSC_PARENT_ADDRESS + "/OnOff")
         {
             bool value = m.getArgAsInt(0)>0;
             AppManager::getInstance().getSceneManager().setActiveScenes(value);

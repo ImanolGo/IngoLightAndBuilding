@@ -138,21 +138,19 @@ void VectorFieldVisual::updateFbo()
     int numSkipFrames = m_fadeTime/(framesToDie*dt);
     m_skipFrames++;
     
-   
     m_fbo.begin();
-    if(m_isAdditiveBlend){
-        ofClear(0);
-    }
     
-    m_blur.begin();
+  
     
      if(m_isAdditiveBlend){
-        // ofClear(0);
+         ofClear(0);
          auto color = AppManager::getInstance().getGuiManager().getColor(0);
          ofSetColor(color);
          ofDrawRectangle(0,0, m_fbo.getWidth(), m_fbo.getHeight());
      }
      else{
+        m_blur.begin();
+         
          if(m_skipFrames>=numSkipFrames){
              glEnable(GL_BLEND);
              glBlendFunc(GL_ONE, GL_ONE);
@@ -183,9 +181,12 @@ void VectorFieldVisual::updateFbo()
     
         this->drawParticles();
     
-    m_blur.end();
-    m_blur.draw();
-    m_fbo.end();
+     if(!m_isAdditiveBlend){
+         m_blur.end();
+         m_blur.draw();
+        
+     }
+     m_fbo.end();
     //ofDisableAlphaBlending();
     //ofDisableBlendMode();
 }
