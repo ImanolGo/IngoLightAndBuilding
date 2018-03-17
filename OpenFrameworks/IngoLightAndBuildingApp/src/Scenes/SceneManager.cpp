@@ -14,7 +14,7 @@
 #include "scenes.h"
 #include "AppManager.h"
 
-SceneManager::SceneManager(): Manager(), m_alpha(-1), m_transitionTime(1.0), m_activeScenes(true)
+SceneManager::SceneManager(): Manager(), m_alpha(-1), m_transitionTime(1.0), m_activeScenes(true), m_timerOn(true)
 {
 	//Intentionally left empty
 }
@@ -146,7 +146,9 @@ void SceneManager::setupTimer()
 void SceneManager::onChangeSceneDuration(float& value)
 {
     m_sceneTimer.setup( value*1000*60 );
-    m_sceneTimer.start( false ) ;
+    if(m_timerOn){
+        m_sceneTimer.start( false ) ;
+    }
     ofLogNotice() <<"SceneManager::setupTimer << Time = : " << time << "s";
 }
 
@@ -205,7 +207,9 @@ void SceneManager::draw(const ofRectangle& rect)
 void SceneManager::changeScene(string sceneName)
 {
     m_mySceneManager.changeScene(sceneName);
-    m_sceneTimer.start(false,true);
+    if(m_timerOn){
+        m_sceneTimer.start(false,true);
+    }
     m_currentSceneName = sceneName;
     
     if(m_currentSceneName!="BLANK" && !m_activeScenes){
@@ -217,7 +221,9 @@ void SceneManager::changeScene(string sceneName)
 void SceneManager::changeScene(int sceneIndex)
 {
      m_mySceneManager.changeScene(sceneIndex);
-     m_sceneTimer.start(false,true);
+    if(m_timerOn){
+        m_sceneTimer.start(false,true);
+    }
      m_currentSceneName = this->getSceneName(sceneIndex);
     
     if(m_currentSceneName!="BLANK" && !m_activeScenes){
@@ -230,7 +236,9 @@ void SceneManager::changeScene(int sceneIndex)
 void SceneManager::onTransitionTimeChange(float& value)
 {
    m_mySceneManager.setSceneDuration(value,value);
-   m_sceneTimer.start(false,true);
+   if(m_timerOn){
+        m_sceneTimer.start(false,true);
+    }
 }
 
 string SceneManager::getSceneName(int sceneIndex)
@@ -258,9 +266,20 @@ int SceneManager::getIndex(const string& sceneName)
 
 void SceneManager::sceneTimerCompleteHandler( int &args )
 {
+    if(!m_timerOn){
+        return;
+    }
+    
     this->nextScene();
 }
 
+void SceneManager::setTimerOn(bool value)
+{
+    m_timerOn = value;
+    if(m_timerOn){
+        m_sceneTimer.start(false);
+    }
+}
 
 void SceneManager::nextScene()
 {

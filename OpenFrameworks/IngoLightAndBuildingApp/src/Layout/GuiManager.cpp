@@ -70,8 +70,8 @@ void GuiManager::setupGuiParameters()
     //m_gui.addLabel("PrimaveraSound GUI");
     
     m_gui.addFRM();
-    m_gui.addToggle("Fullscreen");
-    auto toggle = m_gui.getToggle("Fullscreen");
+    m_gui.addToggle("Timer");
+    auto toggle = m_gui.getToggle("Timer");
     toggle->setChecked(true);
     m_gui.addButton("Save Preset");
     
@@ -111,7 +111,7 @@ void GuiManager::setupLayoutGui()
     m_sceneTransitionTime.addListener(sceneManager, &SceneManager::onTransitionTimeChange);
     m_parameters.add(m_sceneTransitionTime);
     
-    m_sceneTimer.set("ScenesTimer", 30, 10, 120.0);
+    m_sceneTimer.set("ScenesTimer", 30, 1, 120.0);
     m_sceneTimer.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
     m_presets.add(m_sceneTransitionTime);
     
@@ -171,7 +171,7 @@ void GuiManager::setupParticlesGui()
     m_particlesDirectionMag.addListener(particlesManager, &ParticlesManager::setDirecctionMag);
     m_presets.add(m_particlesDirectionMag);
     
-    m_particlesSpeed.set("Speed", 0.0, 0.0, 5.0);
+    m_particlesSpeed.set("Speed", 0.0, 0.0, 10.0);
     m_particlesSpeed.addListener(particlesManager, &ParticlesManager::setSpeed);
     m_presets.add(m_particlesSpeed);
     
@@ -179,7 +179,7 @@ void GuiManager::setupParticlesGui()
     m_particlesSize.addListener(particlesManager, &ParticlesManager::setSize);
     m_presets.add(m_particlesSize);
     
-    m_particlesNum.set("Num", 800, 0, 800);
+    m_particlesNum.set("Num", 800, 0, 1500);
     m_particlesNum.addListener(particlesManager, &ParticlesManager::setNum);
     m_presets.add(m_particlesNum);
     
@@ -373,6 +373,11 @@ void GuiManager::onToggleEvent(ofxDatGuiToggleEvent e)
     if(e.target->getName() == "Fullscreen")
     {
         AppManager::getInstance().getLayoutManager().onFullScreenChange(e.target->getChecked());
+    }
+    
+    else if(e.target->getName() == "Timer")
+    {
+        AppManager::getInstance().getSceneManager().setTimerOn(e.target->getChecked());
     }
 }
 

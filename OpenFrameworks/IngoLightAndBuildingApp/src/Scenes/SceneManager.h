@@ -78,6 +78,8 @@ public:
     
     void setActiveScenes(bool value);
     
+    void setTimerOn(bool value);
+    
 private:
     
     //! Create the scenes
@@ -118,6 +120,7 @@ private:
     string                   m_currentSceneName;
     float                    m_transitionTime;
     bool                     m_activeScenes;
+    bool                     m_timerOn;
 };
 
 //==========================================================================

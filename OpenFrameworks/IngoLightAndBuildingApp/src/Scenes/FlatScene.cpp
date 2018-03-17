@@ -75,10 +75,10 @@ void FlatScene::startAnimation()
     
     EffectSettings settings;
     settings.function = LINEAR; settings.type = EASE_OUT;
-    settings.startAnimation = 0; settings.animationTime = parameters.speed;
+    settings.startAnimation = 0; settings.animationTime = parameters.speed*5;
     
     AppManager::getInstance().getVisualEffectsManager().removeAllVisualEffects(m_image);
-    AppManager::getInstance().getVisualEffectsManager().createScaleEffect(m_image, ofVec2f(0,0),ofVec2f(8,8), settings );
+    AppManager::getInstance().getVisualEffectsManager().createScaleEffect(m_image, ofVec2f(0,0),ofVec2f(5,5), settings );
 }
 
 void FlatScene::resetIndexList()
@@ -117,7 +117,7 @@ void FlatScene::updateImages()
     auto parameters = AppManager::getInstance().getParticlesManager().getParameters();
     
     m_elapsedTime+=ofGetLastFrameTime();
-    if(m_elapsedTime>=parameters.speed){
+    if(m_elapsedTime>=parameters.speed*5){
         this->resetImage();
         this->startAnimation();
         m_elapsedTime = 0.0;
