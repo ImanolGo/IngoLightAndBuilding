@@ -145,9 +145,9 @@ void SceneManager::setupTimer()
 
 void SceneManager::onChangeSceneDuration(float& value)
 {
-    m_sceneTimer.setup( value*1000*60 );
+    m_sceneTimer.setup( value*1000 );
     if(m_timerOn){
-        m_sceneTimer.start( false ) ;
+        m_sceneTimer.start( false, true ) ;
     }
     ofLogNotice() <<"SceneManager::setupTimer << Time = : " << time << "s";
 }

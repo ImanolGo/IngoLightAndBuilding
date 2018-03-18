@@ -113,7 +113,7 @@ void GuiManager::setupLayoutGui()
     
     m_sceneTimer.set("ScenesTimer", 30, 1, 120.0);
     m_sceneTimer.addListener(sceneManager, &SceneManager::onChangeSceneDuration);
-    m_presets.add(m_sceneTransitionTime);
+    m_presets.add(m_sceneTimer);
     
     
     ofxDatGuiFolder* folder = m_gui.addFolder("GENERAL", ofColor::purple);
@@ -270,6 +270,8 @@ void GuiManager::savePresetsValues(const string& sceneName)
     // xml.serialize(m_parameters);
     string xmlName = PRESETS_PREFIX + sceneName +".xml";
     xml.save(xmlName);
+    
+    ofLogNotice() <<"GuiManager::savePresetsValues -> " << xmlName;
 }
 
 void GuiManager::loadPresetsValues(const string& sceneName)
@@ -281,6 +283,7 @@ void GuiManager::loadPresetsValues(const string& sceneName)
     // xml.deserialize(m_parameters);
     
     this->onResetColors();
+    ofLogNotice() <<"GuiManager::loadPresetsValues -> " << xmlName;
 }
 
 void GuiManager::toggleGui()
