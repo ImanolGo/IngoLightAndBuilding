@@ -40,6 +40,7 @@ void GuiManager::setup()
 
     this->setupGuiParameters();
     this->setupScenesGui();
+    this->setupScenesToggleGui();
     this->setupLayoutGui();
     this->setupParticlesGui();
     this->setupPaletteGui();
@@ -79,7 +80,25 @@ void GuiManager::setupGuiParameters()
     
 }
 
-
+void GuiManager::loadSceneToggles()
+{
+    auto folder = m_gui.getFolder("ACTIVATE SCENES");
+    
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
+    
+    for(int i = 0; i < sceneManager->getNumberScenes(); i++)
+    {
+        string sceneName = sceneManager->getSceneName(i);
+        ofxDatGuiComponent*  guiComponent = folder->getComponent(ofxDatGuiType::TOGGLE, sceneName);
+        
+        if(guiComponent!=NULL && m_parameters.contains(sceneName)){
+            ofxDatGuiToggle *toggle = static_cast<ofxDatGuiToggle *>(guiComponent);
+            auto& param = m_parameters.getBool(sceneName);
+            toggle->setChecked(param.get());
+        }
+        
+    }
+}
 
 void GuiManager::setupScenesGui()
 {
@@ -102,12 +121,29 @@ void GuiManager::setupScenesGui()
 
 }
 
+void GuiManager::setupScenesToggleGui()
+{
+    auto sceneManager = &AppManager::getInstance().getSceneManager();
+    
+    ofxDatGuiFolder* folder = m_gui.addFolder("ACTIVATE SCENES", ofColor::deepPink);
+    
+    for(int i = 0; i < sceneManager->getNumberScenes(); i++)
+    {
+        ofParameter<bool> toggle;
+        toggle.set(sceneManager->getSceneName(i), true);
+        m_parameters.add(toggle);
+        
+        folder->addToggle(sceneManager->getSceneName(i), true);
+    }
+}
+
+
 void GuiManager::setupLayoutGui()
 {
     auto layoutManager = &AppManager::getInstance().getLayoutManager();
     auto sceneManager = &AppManager::getInstance().getSceneManager();
     
-    m_sceneTransitionTime.set("TransitionTime", 0.5, 0.0, 3.0);
+    m_sceneTransitionTime.set("TransitionTime", 0.5, 0.0, 8.0);
     m_sceneTransitionTime.addListener(sceneManager, &SceneManager::onTransitionTimeChange);
     m_parameters.add(m_sceneTransitionTime);
     
@@ -259,6 +295,8 @@ void GuiManager::loadGuiValues()
     xml.load(GUI_SETTINGS_FILE_NAME);
     ofDeserialize(xml, m_parameters);
    // xml.deserialize(m_parameters);
+    
+    this->loadSceneToggles();
 }
 
 
@@ -382,6 +420,8 @@ void GuiManager::onToggleEvent(ofxDatGuiToggleEvent e)
     {
         AppManager::getInstance().getSceneManager().setTimerOn(e.target->getChecked());
     }
+    
+    this->setSceneToggle(e.target->getName(), e.target->getChecked());
 }
 
 void GuiManager::onMatrixEvent(ofxDatGuiMatrixEvent e)
@@ -392,6 +432,26 @@ void GuiManager::onMatrixEvent(ofxDatGuiMatrixEvent e)
     {
 //        AppManager::getInstance().getAnimationsManager().onSetSelectedAnimations( e.target->getSelected());
     }
+}
+
+void GuiManager::setSceneToggle(string name, bool value)
+{
+    if(m_parameters.contains(name)){
+        auto& toggle = m_parameters.getBool(name);
+        toggle = value;
+        ofLogNotice() << "GuiManager::setSceneToggle -> set toogle " << toggle.getName() << " to " << toggle.get();
+    }
+}
+
+
+bool GuiManager::isSceneActive(string name)
+{
+    if(m_parameters.contains(name)){
+        auto& toggle = m_parameters.getBool(name);
+        return toggle.get();
+    }
+    
+    return false;
 }
 
 

@@ -49,6 +49,7 @@ void LayoutManager::setup()
     this->setupFbo();
     this->setupSyphon();
     this->setupWindowFrames();
+    //this->initializeGamma();
 
 }
 
@@ -71,7 +72,6 @@ void LayoutManager::setupSyphon()
     
     ofLogNotice() <<"LayoutManager::setupSyphon << Setting up Syphon server: " << name;
 }
-
 
 void LayoutManager::resetWindowRects()
 {

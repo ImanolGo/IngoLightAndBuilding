@@ -1,4 +1,16 @@
 <?xml version="1.0"?>
 <group>
-	<TransitionTime>0.84</TransitionTime>
+	<ECSTATIC>0</ECSTATIC>
+	<TECHNOSTRESSED>1</TECHNOSTRESSED>
+	<MELANCHOLIC>1</MELANCHOLIC>
+	<CALM>0</CALM>
+	<SAD>0</SAD>
+	<LONELY>1</LONELY>
+	<IMPATIENT>0</IMPATIENT>
+	<LOVED>0</LOVED>
+	<CHEERFUL>0</CHEERFUL>
+	<CURIOUS>0</CURIOUS>
+	<HEART>0</HEART>
+	<BLANK>0</BLANK>
+	<TransitionTime>2.76</TransitionTime>
 </group>

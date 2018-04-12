@@ -79,6 +79,8 @@ public:
     
     const ofColor& getColor(int index);
     
+    bool isSceneActive(string name);
+    
 private:
     
     void setupGuiParameters();
@@ -86,6 +88,8 @@ private:
     void setupGuiColors();
     
     void setupScenesGui();
+    
+    void setupScenesToggleGui();
     
     void setupLayoutGui();
     
@@ -100,6 +104,11 @@ private:
     void setColor(string name, ofColor& color);
     
     void onResetColors();
+    
+    void setSceneToggle(string name, bool value);
+    
+    void loadSceneToggles();
+    
 
 
 private:

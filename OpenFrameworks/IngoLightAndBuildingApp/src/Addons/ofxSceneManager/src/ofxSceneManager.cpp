@@ -89,6 +89,7 @@ void ofxSceneManager::draw() {
     _fbo.end();
     
     ofPushStyle();
+    
     ofSetColor(255, 255, 255, _currentScene->getSceneAlpha() * alpha);
     _fbo.draw(0, 0);
     ofPopStyle();

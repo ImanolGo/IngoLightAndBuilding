@@ -64,6 +64,8 @@ private:
 
     //! Create the image visuals
     void createImageVisuals();
+    
+    //void initializeGamma();
 
     //! Set-up the syphon server
     void setupSyphon();
@@ -106,6 +108,7 @@ private:
     
     ofFbo               m_fbo;
     ofFbo               m_syphonFbo;
+    //vector<int>         m_gammaE;
     
 };
 

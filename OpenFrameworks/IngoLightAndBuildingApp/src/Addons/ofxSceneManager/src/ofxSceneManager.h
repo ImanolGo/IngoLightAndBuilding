@@ -79,6 +79,7 @@ public:
     
     float alpha;
     float currentAlpha;
+    
 };
 
 #endif /* defined(__KokiNomura__ofxSceneManager__) */

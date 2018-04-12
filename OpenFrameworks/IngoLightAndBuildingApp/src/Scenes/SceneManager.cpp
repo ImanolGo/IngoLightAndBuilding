@@ -155,7 +155,18 @@ void SceneManager::onChangeSceneDuration(float& value)
 void SceneManager::initializeSceneList()
 {
     m_sceneList.clear();
-    m_sceneList = { "LOVED", "IMPATIENT", "CALM"};
+    
+    for(int i = 0; i < this->getNumberScenes(); i++)
+    {
+        string sceneName = this->getSceneName(i);
+        auto isSceneActive = AppManager::getInstance().getGuiManager().isSceneActive(sceneName);
+        if(isSceneActive){
+            m_sceneList.push_back(sceneName);
+        }
+        
+    }
+    
+   // m_sceneList = { "ECSTATIC","TECHNOSTRESSED","MELANCHOLIC" , "CALM", "SAD", "LONELY", "IMPATIENT",  "LOVED", "CHEERFUL", "CURIOUS" };
 }
 
 

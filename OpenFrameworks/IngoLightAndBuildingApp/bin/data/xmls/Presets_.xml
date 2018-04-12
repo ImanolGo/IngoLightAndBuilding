@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <group>
-	<ScenesTimer>72.53</ScenesTimer>
+	<ScenesTimer>67.85</ScenesTimer>
 	<Direction>0</Direction>
 	<Dir__Mag_>0</Dir__Mag_>
 	<Speed>0.96</Speed>
 	<Size>2.25</Size>
-	<Num>373</Num>
-	<Fade>58.99</Fade>
+	<Num>800</Num>
+	<Fade>28.65</Fade>
 	<Vect__Speed>0.2</Vect__Speed>
 	<Randomness>0</Randomness>
 	<Blur>0.01</Blur>
-	<COLOR_0>7274723</COLOR_0>
-	<COLOR_1>0</COLOR_1>
-	<COLOR_2>0</COLOR_2>
-	<COLOR_3>526086</COLOR_3>
-	<COLOR_4>197379</COLOR_4>
+	<COLOR_0>0</COLOR_0>
+	<COLOR_1>14680181</COLOR_1>
+	<COLOR_2>14803425</COLOR_2>
+	<COLOR_3>1638878</COLOR_3>
+	<COLOR_4>5767305</COLOR_4>
 </group>
